@@ -1,6 +1,6 @@
 
 
-package com.example.Domain;
+package com.example.biocsoopapp.Domain;
 
 import android.os.Parcel;
 import android.os.Parcelable;
