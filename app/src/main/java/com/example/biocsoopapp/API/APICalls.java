@@ -1,14 +1,15 @@
 package com.example.biocsoopapp.API;
 
-import
-
 import java.util.List;
 
 import Domain.Movie;
+import Domain.Page;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface APICalls  {
-    @GET("get/popularMovies")
-    Call<List<Movie>> popularMovies();
+    @GET("movie/popular")
+    Call<Page> popularMovies(@Query("api_key") String api_key);
 }
