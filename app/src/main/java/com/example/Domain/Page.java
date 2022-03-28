@@ -1,13 +1,11 @@
 
 
-package Domain;
+package com.example.Domain;
 
 import java.util.List;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import Domain.Movie;
 
 public class Page {
 

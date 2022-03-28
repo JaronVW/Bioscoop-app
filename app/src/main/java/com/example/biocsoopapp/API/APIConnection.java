@@ -5,8 +5,8 @@ import android.util.Log;
 
 import java.util.List;
 
-import Domain.Movie;
-import Domain.Page;
+import com.example.Domain.Movie;
+import com.example.Domain.Page;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

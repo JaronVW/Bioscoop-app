@@ -1,6 +1,6 @@
 
 
-package Domain;
+package com.example.Domain;
 
 import java.util.List;
 
