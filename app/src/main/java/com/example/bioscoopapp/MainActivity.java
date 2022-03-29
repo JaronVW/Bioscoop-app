@@ -1,10 +1,13 @@
-package com.example.biocsoopapp;
+package com.example.bioscoopapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.widget.TextView;
 
-import com.example.biocsoopapp.API.APIConnection;
+import com.example.bioscoopapp.API.APIConnection;
+
+import com.example.bioscoopapp.R;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +16,5 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        APIConnection apiConnection = new APIConnection();
     }
 }

@@ -1,4 +1,4 @@
-package com.example.biocsoopapp;
+package com.example.bioscoopapp;
 
 import org.junit.Test;
 

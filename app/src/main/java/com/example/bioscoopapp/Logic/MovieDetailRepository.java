@@ -1,0 +1,17 @@
+package com.example.bioscoopapp.Logic;
+
+import com.example.bioscoopapp.API.APIConnection;
+import com.example.bioscoopapp.Domain.MovieDetail;
+
+public class MovieDetailRepository {
+
+    private final APIConnection apiConnection;
+
+    public MovieDetailRepository() {
+        this.apiConnection = new APIConnection();
+    }
+
+    public MovieDetail getMovieDetails(String movieID){
+        return apiConnection.GetMovieDetails(movieID);
+    }
+}
