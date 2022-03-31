@@ -5,15 +5,20 @@ package com.example.bioscoopapp.Domain;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-
+@Entity(tableName = "Genre")
 public class Genre implements Parcelable {
 
     @SerializedName("id")
     @Expose
+    @PrimaryKey
     private Integer id;
+
     @SerializedName("name")
     @Expose
     private String name;
