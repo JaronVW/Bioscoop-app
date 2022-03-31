@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bioscoop app</string>
+    <string name="filters_text">Filters</string>
+    <string name="movie_header_text">Movie header</string>
 </resources>

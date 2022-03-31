@@ -1,6 +1,5 @@
-package com.example.bioscoopapp.API;
+package com.example.bioscoopapp.Application;
 
-import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Domain.MovieDetail;
 import com.example.bioscoopapp.Domain.Page;
 import retrofit2.Call;

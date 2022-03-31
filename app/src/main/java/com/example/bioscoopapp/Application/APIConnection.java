@@ -1,4 +1,4 @@
-package com.example.bioscoopapp.API;
+package com.example.bioscoopapp.Application;
 
 
 import android.util.Log;
@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicReference;
 
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Domain.MovieDetail;
@@ -33,7 +32,7 @@ public class APIConnection {
 
     public List<Movie> getPopularMovies() {
         CountDownLatch latch = new CountDownLatch(1);
-        List<Movie> movieList = new ArrayList<>();
+        ArrayList<Movie> movieList = new ArrayList<>();
         // list that contains the movies and countdown latch used to wait for the thread to finish
         new Thread(() -> {
             try {
@@ -59,7 +58,6 @@ public class APIConnection {
         }
 
     }
-
 
     public MovieDetail GetMovieDetails(String movieID) {
         CountDownLatch latch = new CountDownLatch(1);
