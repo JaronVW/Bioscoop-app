@@ -5,52 +5,78 @@ package com.example.bioscoopapp.Domain;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
+
+import java.lang.reflect.Type;
 import java.util.List;
 
+import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 
+@Entity(tableName = "Movie")
+//@TypeConverters({GenreTypeConverters.class})
 public class Movie implements Parcelable {
 
     @SerializedName("adult")
     @Expose
     private Boolean adult;
+
     @SerializedName("backdrop_path")
     @Expose
     private String backdropPath;
+
     @SerializedName("genre_ids")
     @Expose
+    @Ignore
     private List<Integer> genreIds = null;
+
     @SerializedName("id")
     @Expose
+    @PrimaryKey
     private Integer id;
+
     @SerializedName("original_language")
     @Expose
     private String originalLanguage;
+
     @SerializedName("original_title")
     @Expose
     private String originalTitle;
+
     @SerializedName("overview")
     @Expose
     private String overview;
+
     @SerializedName("popularity")
     @Expose
     private Double popularity;
+
     @SerializedName("poster_path")
     @Expose
     private String posterPath;
+
     @SerializedName("release_date")
     @Expose
     private String releaseDate;
+
     @SerializedName("title")
     @Expose
     private String title;
+
     @SerializedName("video")
     @Expose
     private Boolean video;
+
     @SerializedName("vote_average")
     @Expose
     private Double voteAverage;
+
     @SerializedName("vote_count")
     @Expose
     private Integer voteCount;
@@ -323,3 +349,20 @@ public class Movie implements Parcelable {
         }
     }
 }
+
+
+
+//class GenreTypeConverters {
+//    @TypeConverter
+//    public static List<Integer> fromString(int genreID ){
+//        Type listType = new TypeToken<List<Integer>>() {}.getType();
+//        return new Gson().fromJson(String.valueOf(genreID), listType);
+//    }
+//
+//    @TypeConverter
+//    public static int fromArrayList(List<Integer> genreIDs ){
+//        Gson gson = new Gson();
+//        String json = gson.toJson(genreIDs);
+//        return Integer.parseInt(json);
+//    }
+//}
