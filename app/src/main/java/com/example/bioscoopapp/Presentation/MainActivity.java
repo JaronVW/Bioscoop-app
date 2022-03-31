@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.bioscoopapp.Data.DatabaseClient;
 import com.example.bioscoopapp.Data.RecyclerViewInterface;
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Logic.MovieRepository;
 import com.example.bioscoopapp.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
@@ -24,7 +26,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     private RecyclerView recyclerView;
     private MovieAdapter adapter;
     private ArrayList<Movie> movies;
+    private List<Movie> dbMovies;
     private MovieRepository repo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +37,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
         //Getting list of movies...
         this.repo = new MovieRepository();
-        this.movies = (ArrayList<Movie>) this.repo.GetPopularMovies();
+        this.movies = (ArrayList<Movie>) this.repo.GetPopularMoviesFromAPI();
+
 
         //Storing list of movies inside recyclerview...
         this.recyclerView = findViewById(R.id.movies_recyclerview);
@@ -46,7 +51,11 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         toast.show();
 
         Log.d(LOG_TAG, "List of movies opened!");
+
+
+
     }
+
 
     @Override
     public void onItemClick(int position) {
