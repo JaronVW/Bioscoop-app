@@ -23,6 +23,8 @@ public class Genre implements Parcelable {
     @Expose
     private String name;
 
+    private int movieID;
+
     protected Genre(Parcel in) {
         if (in.readByte() == 0) {
             id = null;
