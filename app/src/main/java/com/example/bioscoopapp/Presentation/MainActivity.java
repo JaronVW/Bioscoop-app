@@ -8,9 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.bioscoopapp.Application.APIConnection;
-
-import com.example.bioscoopapp.Application.RecyclerViewInterface;
+import com.example.bioscoopapp.API.RecyclerViewInterface;
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Logic.MovieRepository;
 import com.example.bioscoopapp.R;
@@ -18,10 +16,10 @@ import com.example.bioscoopapp.R;
 import java.util.ArrayList;
 
 
-public class ListOfMovies extends AppCompatActivity implements RecyclerViewInterface {
+public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
 
     private static final String LOG_TAG =
-            ListOfMovies.class.getSimpleName() + " DEBUG";
+            MainActivity.class.getSimpleName() + " DEBUG";
 
     private RecyclerView recyclerView;
     private MovieAdapter adapter;

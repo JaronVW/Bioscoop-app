@@ -1,9 +1,8 @@
 package com.example.bioscoopapp.Logic;
 
-import com.example.bioscoopapp.Application.APIConnection;
+import com.example.bioscoopapp.API.APIConnection;
 import com.example.bioscoopapp.Domain.Movie;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MovieRepository {
