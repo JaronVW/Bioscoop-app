@@ -25,6 +25,9 @@ public class Genre implements Parcelable {
 
     private int movieID;
 
+    public Genre() {
+    }
+
     protected Genre(Parcel in) {
         if (in.readByte() == 0) {
             id = null;
@@ -76,5 +79,13 @@ public class Genre implements Parcelable {
             parcel.writeInt(id);
         }
         parcel.writeString(name);
+    }
+
+    public int getMovieID() {
+        return movieID;
+    }
+
+    public void setMovieID(int movieID) {
+        this.movieID = movieID;
     }
 }

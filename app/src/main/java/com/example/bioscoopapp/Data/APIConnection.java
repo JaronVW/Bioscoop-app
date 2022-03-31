@@ -1,4 +1,4 @@
-package com.example.bioscoopapp.API;
+package com.example.bioscoopapp.Data;
 
 
 import android.util.Log;

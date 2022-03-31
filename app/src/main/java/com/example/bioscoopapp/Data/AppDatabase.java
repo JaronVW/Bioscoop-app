@@ -1,4 +1,4 @@
-package com.example.bioscoopapp.Database;
+package com.example.bioscoopapp.Data;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;

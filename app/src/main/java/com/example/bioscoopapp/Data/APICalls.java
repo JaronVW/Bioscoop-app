@@ -1,4 +1,4 @@
-package com.example.bioscoopapp.API;
+package com.example.bioscoopapp.Data;
 
 import com.example.bioscoopapp.Domain.MovieDetail;
 import com.example.bioscoopapp.Domain.Page;
