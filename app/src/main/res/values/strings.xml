@@ -2,4 +2,13 @@
     <string name="app_name">Bioscoop app</string>
     <string name="filters_text">Filters</string>
     <string name="movie_header_text">Movie header</string>
+    <string name="language_text">Spoken languages:</string>
+    <string name="spoken_languages_text">Spoken languages:</string>
+    <string name="runtime_text">Runtime:</string>
+    <string name="release_date_text">Release date:</string>
+    <string name="tagline_text">Tagline:</string>
+    <string name="budget_text">Budget:</string>
+    <string name="popularity_text">Popularity:</string>
+    <string name="vote_count_text">Vote count:</string>
+    <string name="vote_average_text">Vote average:</string>
 </resources>
