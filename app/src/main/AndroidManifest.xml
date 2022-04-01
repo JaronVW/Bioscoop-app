@@ -12,9 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BioscoopApp">
         <activity
-            android:name=".Presentation.MovieDetailsActivity"
-            android:exported="false" />
-        <activity
             android:name=".Presentation.MainActivity"
             android:exported="true">
             <intent-filter>
@@ -22,6 +19,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Presentation.MovieDetailsActivity"
+            android:label="Movie Details"
+            android:parentActivityName=".Presentation.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.bioscoopapp.Presentation.MainActivity" />
         </activity>
     </application>
 
