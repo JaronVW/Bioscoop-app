@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -51,14 +52,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         toast.show();
 
         Log.d(LOG_TAG, "List of movies opened!");
-
-
-
     }
 
 
     @Override
     public void onItemClick(int position) {
-
+        Log.d(LOG_TAG, "Movie clicked!");
+        Intent intent = new Intent(this, MovieDetailsActivity.class);
+        intent.putExtra("MovieID", this.movies.get(position).getId());
+        startActivity(intent);
     }
 }
