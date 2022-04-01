@@ -54,6 +54,9 @@ public class MovieDetail implements Parcelable {
     @SerializedName("runtime")
     @Expose
     private Integer runtime;
+    @SerializedName("spoken_languages")
+    @Expose
+    private List<SpokenLanguage> spokenLanguages = null;
     @SerializedName("status")
     @Expose
     private String status;
@@ -246,6 +249,14 @@ public class MovieDetail implements Parcelable {
 
     public void setRuntime(Integer runtime) {
         this.runtime = runtime;
+    }
+
+    public List<SpokenLanguage> getSpokenLanguages() {
+        return spokenLanguages;
+    }
+
+    public void setSpokenLanguages(List<SpokenLanguage> spokenLanguages) {
+        this.spokenLanguages = spokenLanguages;
     }
 
     public String getStatus() {
