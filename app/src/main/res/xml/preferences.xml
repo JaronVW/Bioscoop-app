@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Text appearance">
+        <ListPreference
+            android:title="Language"
+            android:summary="Select a language to view the app in."
+            android:entries="@array/languages_array"
+            android:entryValues="@array/languages_array">
+        </ListPreference>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="App appearance">
+        <SwitchPreference
+            android:title="Dark mode"
+            android:summary="Turn on dark mode for more comfortable reading at night."
+            android:entries="@array/languages_array">
+        </SwitchPreference>
+    </PreferenceCategory>
+</PreferenceScreen>

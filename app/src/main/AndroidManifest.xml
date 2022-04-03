@@ -16,7 +16,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -28,6 +27,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.bioscoopapp.Presentation.MainActivity" />
         </activity>
+        <activity
+            android:name=".Presentation.PreferencesActivity"
+            android:label="Settings"
+            android:exported="false" />
     </application>
 
 </manifest>

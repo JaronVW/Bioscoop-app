@@ -2,12 +2,14 @@ package com.example.bioscoopapp.Presentation;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Domain.MovieDetail;
 import com.example.bioscoopapp.Logic.DataFormatter;
 import com.example.bioscoopapp.Logic.MovieDetailRepository;
@@ -80,5 +82,21 @@ public class MovieDetailsActivity extends AppCompatActivity {
         TextView voteAverage = findViewById(R.id.movie_details_voteAverage);
         voteAverage.setText(String.valueOf(this.movie.getVoteAverage()));
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.settings) {
+            Intent intent = new Intent(this, PreferencesActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
