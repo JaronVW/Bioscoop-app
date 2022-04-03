@@ -22,12 +22,15 @@ public class APIConnection {
 
     private final APIKey apiKey;
     private final APICalls apiCalls;
+    private final String TAG;
 
     public APIConnection() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://api.themoviedb.org/3/").addConverterFactory(GsonConverterFactory.create()).build();
         apiCalls = retrofit.create(APICalls.class);
         apiKey = new APIKey();
         // build retrofit class and instantiate a new apikey class
+        TAG =getClass().getSimpleName();
+
     }
 
     public List<Movie> getPopularMovies() {
@@ -44,7 +47,7 @@ public class APIConnection {
                 }
                 latch.countDown();
             } catch (IOException e) {
-                Log.d("Exception", e.toString());
+                Log.d(TAG, e.toString());
             }
         }).start();
         // api fetch gets executed in new thread
@@ -53,7 +56,7 @@ public class APIConnection {
             return movieList;
             // returns list after countdown has been called
         } catch (InterruptedException e) {
-            Log.d("Exception", e.toString());
+            Log.d(TAG, e.toString());
             return null;
         }
 
@@ -72,7 +75,7 @@ public class APIConnection {
                 latch.countDown();
 
             } catch (IOException e) {
-                Log.d("Exception", e.toString());
+                Log.d(TAG, e.toString());
             }
         }).start();
         // api fetch gets executed in new thread
@@ -81,7 +84,7 @@ public class APIConnection {
             return movie[0];
             // returns object after countdown has been called
         } catch (InterruptedException e) {
-            Log.d("Exception", e.toString());
+            Log.d(TAG, e.toString());
             return null;
         }
 

@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     private RecyclerView recyclerView;
     private MovieAdapter adapter;
     private ArrayList<Movie> movies;
-    private List<Movie> dbMovies;
+    private ArrayList<Movie> dbMovies;
     private MovieRepository repo;
 
 
@@ -37,9 +37,11 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         setContentView(R.layout.activity_list_of_movies);
 
         //Getting list of movies...
-        this.repo = new MovieRepository();
+        this.repo = new MovieRepository(getApplicationContext());
         this.movies = (ArrayList<Movie>) this.repo.GetPopularMoviesFromAPI();
+        this.dbMovies = (ArrayList<Movie>) repo.GetPopularMoviesFromDB();
 
+        System.out.println(String.valueOf(repo.isTableEmpty()));
 
         //Storing list of movies inside recyclerview...
         this.recyclerView = findViewById(R.id.movies_recyclerview);
