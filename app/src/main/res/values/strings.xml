@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bioscoop app</string>
+    <string name="app_name">Movie app</string>
     <string name="filters_text">Filters</string>
     <string name="movie_header_text">Movie header</string>
     <string name="language_text">Language</string>
@@ -14,12 +14,25 @@
     <string name="preferences_text">Preferences</string>
     <string name="a_language_selector_text">A language selector.</string>
     <string name="light_mode_text">Light mode</string>
+    <string name="language_summary">Select a language to view the app in.</string>
+    <string name="dark_mode_text">Dark mode</string>
+    <string name="dark_mode_summary">Turn on dark mode for more comfortable reading at night.</string>
+    <string name="app_appearance_text">App appearance</string>
+    <string name="text_appearance_text">Text appearance</string>
     <string-array name="languages_array">
         <item>English</item>
-        <item>Dutch</item>
-        <item>German</item>
-        <item>French</item>
-        <item>Spanish</item>
-        <item>Russian</item>
+        <item>Nederlands</item>
+        <item>Deutsch</item>
+        <item>Français</item>
+        <item>Español</item>
+        <item>pусский</item>
+    </string-array>
+    <string-array name="languages_values">
+        <item>en</item>
+        <item>nl</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
     </string-array>
 </resources>
