@@ -3,16 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Avans/Programmeren-3/Bioscoop-app/app/src/main/res/drawable-anydpi/ic_filters_icon.xml" value="0.2265" />
-        <entry key="..\:/Avans/Programmeren-3/Bioscoop-app/app/src/main/res/drawable-anydpi/ic_settings_icon.xml" value="0.2265" />
         <entry key="..\:/Avans/Programmeren-3/Bioscoop-app/app/src/main/res/layout/activity_list_of_movies.xml" value="0.22826086956521738" />
         <entry key="..\:/Avans/Programmeren-3/Bioscoop-app/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Avans/Programmeren-3/Bioscoop-app/app/src/main/res/layout/activity_movie_details.xml" value="0.264" />
-        <entry key="..\:/Avans/Programmeren-3/Bioscoop-app/app/src/main/res/layout/activity_settings.xml" value="0.264" />
         <entry key="..\:/Avans/Programmeren-3/Bioscoop-app/app/src/main/res/layout/movielist_item.xml" value="0.22826086956521738" />
-        <entry key="..\:/Avans/Programmeren-3/Bioscoop-app/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
-        <entry key="..\:/Avans/Programmeren-3/Bioscoop-app/app/src/main/res/xml/preferences.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Jaron/Documents/avans_hbo/PMOSE/Bioscoop-app/app/src/main/res/layout/activity_main.xml" value="0.20989583333333334" />
+        <entry key="..\:/Users/Jaron/Documents/avans_hbo/PMOSE/Bioscoop-app/app/src/main/res/menu/menu.xml" value="0.25" />
       </map>
     </option>
   </component>

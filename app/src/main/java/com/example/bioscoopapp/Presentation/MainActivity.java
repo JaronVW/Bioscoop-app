@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         this.movies = (ArrayList<Movie>) this.repo.GetPopularMoviesFromAPI();
         this.dbMovies = (ArrayList<Movie>) repo.GetPopularMoviesFromDB();
 
-        System.out.println(repo.isTableEmpty());
 
         //Storing list of movies inside recyclerview...
         this.recyclerView = findViewById(R.id.movies_recyclerview);
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     public void onItemClick(int position) {
         Log.d(LOG_TAG, "Movie clicked!");
         Intent intent = new Intent(this, MovieDetailsActivity.class);
-        intent.putExtra("MovieID", this.movies.get(position).getId());
+        intent.putExtra("MovieID", this.movies.get(position).getMovieID());
         startActivity(intent);
     }
 
