@@ -19,20 +19,5 @@
     <string name="dark_mode_summary">Schakel de donkere modus in voor comfortabeler lezen \'s nachts.</string>
     <string name="app_appearance_text">Uiterlijk app</string>
     <string name="text_appearance_text">Uiterlijk tekst</string>
-    <string-array name="languages_array">
-        <item>English</item>
-        <item>Nederlands</item>
-        <item>Deutsch</item>
-        <item>Français</item>
-        <item>Español</item>
-        <item>pусский</item>
-    </string-array>
-    <string-array name="languages_values">
-        <item>en</item>
-        <item>nl</item>
-        <item>de</item>
-        <item>fr</item>
-        <item>es</item>
-        <item>ru</item>
-    </string-array>
+    <string name="an_icon_of_a_filter" translatable="false">Een icoon van een filter.</string>
 </resources>

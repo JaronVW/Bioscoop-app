@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Film-App</string>
+    <string name="movie_header_text">Kopfzeile des Films</string>
+    <string name="language_text">Sprache</string>
+    <string name="spoken_languages_text">Gesprochene Sprachen:</string>
+    <string name="runtime_text">Laufzeit:</string>
+    <string name="release_date_text">Veröffentlichungsdatum:</string>
+    <string name="tagline_text">Slogan:</string>
+    <string name="budget_text">Budget:</string>
+    <string name="popularity_text">Popularität:</string>
+    <string name="vote_count_text">Stimmenzahl:</string>
+    <string name="vote_average_text">Stimmendurchschnitt:</string>
+    <string name="preferences_text">Einstellungen</string>
+    <string name="a_language_selector_text">Eine Sprachauswahl.</string>
+    <string name="light_mode_text">Lichtmodus</string>
+    <string name="language_summary">Wählen Sie eine Sprache aus, in der die App angezeigt werden soll.</string>
+    <string name="dark_mode_text">Dunkler Modus</string>
+    <string name="dark_mode_summary">Schalten Sie den Dunkelmodus ein, um nachts bequemer lesen zu können.</string>
+    <string name="app_appearance_text">App-Erscheinungsbild</string>
+    <string name="text_appearance_text">Textdarstellung</string>
+    <string name="an_icon_of_a_filter" translatable="false">Ein Symbol eines Filters.</string>
+</resources>

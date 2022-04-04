@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Приложение для фильмов</string>
+    <string name="movie_header_text">Заголовок фильма</string>
+    <string name="language_text">Язык</string>
+    <string name="spoken_languages_text">Разговорные языки:</string>
+    <string name="runtime_text">Время выполнения:</string>
+    <string name="release_date_text">Дата выпуска:</string>
+    <string name="tagline_text">Слоган:</string>
+    <string name="budget_text">Бюджет:</string>
+    <string name="popularity_text">Популярность:</string>
+    <string name="vote_count_text">Подсчет голосов:</string>
+    <string name="vote_average_text">Среднее количество голосов:</string>
+    <string name="preferences_text">Настройки</string>
+    <string name="a_language_selector_text">Селектор языка.</string>
+    <string name="light_mode_text">Легкий режим</string>
+    <string name="language_summary">Выберите язык для просмотра приложения.</string>
+    <string name="dark_mode_text">Темный режим</string>
+    <string name="dark_mode_summary">Включите темный режим для более комфортного чтения ночью.</string>
+    <string name="app_appearance_text">Внешний вид приложения</string>
+    <string name="text_appearance_text">Оригинальный текст</string>
+    <string name="an_icon_of_a_filter" translatable="false">Значок фильтра.</string>
+</resources>

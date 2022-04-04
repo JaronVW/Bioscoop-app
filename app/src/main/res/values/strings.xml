@@ -18,7 +18,7 @@
     <string name="dark_mode_summary">Turn on dark mode for more comfortable reading at night.</string>
     <string name="app_appearance_text">App appearance</string>
     <string name="text_appearance_text">Text appearance</string>
-    <string name="an_icon_of_a_filter" translatable="false">An icon of a filter.</string>
+    <string name="an_icon_of_a_filter">An icon of a filter.</string>
     <string-array name="languages_array">
         <item>English</item>
         <item>Nederlands</item>

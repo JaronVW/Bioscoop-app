@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Application de film</string>
+    <string name="movie_header_text">En-tête du film</string>
+    <string name="language_text">Langue</string>
+    <string name="spoken_languages_text">Langues parlées:</string>
+    <string name="runtime_text">Durée:</string>
+    <string name="release_date_text">Date de sortie:</string>
+    <string name="tagline_text">Slogan:</string>
+    <string name="budget_text">Budget:</string>
+    <string name="popularity_text">Popularité:</string>
+    <string name="vote_count_text">Décompte des voix:</string>
+    <string name="vote_average_text">Moyenne des votes:</string>
+    <string name="preferences_text">Préférences</string>
+    <string name="a_language_selector_text">Un sélecteur de langue.</string>
+    <string name="light_mode_text">Mode lumière</string>
+    <string name="language_summary">Sélectionnez une langue dans laquelle afficher l\'application.</string>
+    <string name="dark_mode_text">Dark mode</string>
+    <string name="dark_mode_summary">Activez le mode sombre pour une lecture plus confortable la nuit.</string>
+    <string name="app_appearance_text">Apparence de l\'application</string>
+    <string name="text_appearance_text">Apparence du texte</string>
+    <string name="an_icon_of_a_filter" translatable="false">Une icône d\'un filtre.</string>
+</resources>

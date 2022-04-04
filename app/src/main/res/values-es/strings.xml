@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Apariencia del texto</string>
+    <string name="movie_header_text">Encabezado de película</string>
+    <string name="language_text">Idioma</string>
+    <string name="spoken_languages_text">Lenguajes hablados:</string>
+    <string name="runtime_text">Tiempo de ejecución:</string>
+    <string name="release_date_text">Fecha de lanzamiento:</string>
+    <string name="tagline_text">Lema:</string>
+    <string name="budget_text">Presupuesto:</string>
+    <string name="popularity_text">Popularidad:</string>
+    <string name="vote_count_text">Recuento de votos:</string>
+    <string name="vote_average_text">Promedio de votos:</string>
+    <string name="preferences_text">Preferencias</string>
+    <string name="a_language_selector_text">Un selector de idioma.</string>
+    <string name="light_mode_text">Modo de luz</string>
+    <string name="language_summary">Seleccione un idioma para ver la aplicación.</string>
+    <string name="dark_mode_text">modo oscuro</string>
+    <string name="dark_mode_summary">Activa el modo oscuro para una lectura más cómoda por la noche.</string>
+    <string name="app_appearance_text">apariencia de la aplicación</string>
+    <string name="text_appearance_text">Texto de Uiterlijk</string>
+    <string name="an_icon_of_a_filter" translatable="false">Un icono de un filtro.</string>
+</resources>
