@@ -19,15 +19,16 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <TextView
-        android:id="@+id/list_of_meals_filter_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="@string/filters_text"
-        android:textSize="34sp"
-        android:textStyle="bold"
+        android:id="@+id/movies_filter_icon"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/ic_filters_icon"
+        android:contentDescription="@string/an_icon_of_a_filter"
         app:layout_constraintBottom_toTopOf="@+id/movies_recyclerview"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent">
+    </TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bioscoop app</string>
-    <string name="filters_text">Filters</string>
     <string name="movie_header_text">Film kop</string>
     <string name="language_text">Taal</string>
     <string name="spoken_languages_text">Gesproken talen:</string>
@@ -29,11 +28,11 @@
         <item>pусский</item>
     </string-array>
     <string-array name="languages_values">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
+        <item>en</item>
+        <item>nl</item>
+        <item>de</item>
+        <item>fr</item>
+        <item>es</item>
+        <item>ru</item>
     </string-array>
 </resources>
