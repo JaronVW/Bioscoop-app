@@ -29,7 +29,7 @@ public class APIConnection {
         apiCalls = retrofit.create(APICalls.class);
         apiKey = new APIKey();
         // build retrofit class and instantiate a new apikey class
-        TAG =getClass().getSimpleName();
+        TAG = getClass().getSimpleName();
 
     }
 

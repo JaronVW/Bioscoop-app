@@ -1,6 +1,10 @@
 package com.example.bioscoopapp.Logic;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.bioscoopapp.Data.APIConnection;
 import com.example.bioscoopapp.Data.DatabaseClient;
@@ -15,10 +19,12 @@ public class MovieRepository {
 
     private final APIConnection apiConnection;
     private final MovieDAO movieDAO;
+    private final Context context;
 
     public MovieRepository(Context context) {
+        this.context = context;
         this.apiConnection = new APIConnection();
-        movieDAO = DatabaseClient.getInstance(context).getAppDatabase().movieDAO();
+        movieDAO = DatabaseClient.getInstance(this.context).getAppDatabase().movieDAO();
     }
 
     public List<Movie> GetPopularMoviesFromAPI() {
@@ -32,33 +38,67 @@ public class MovieRepository {
             list.addAll(movieDAO.getAll());
             latch.countDown();
         }).start();
-        return list;
+        try {
+            latch.await();
+            return list;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
-    public boolean isTableEmpty() {
+    public void insertAllMoviesInDB(List<Movie> movies) {
         CountDownLatch latch = new CountDownLatch(1);
-        boolean[] isEmpty = {true};
         new Thread(() -> {
-            isEmpty[0] = !movieDAO.isTableEmpty();
-            latch.countDown();
-        }).start();
-        return isEmpty[0];
-    }
-
-    public void insertAllMovies(List<Movie> movies) {
-        new Thread(() ->{
             for (Movie movie : movies) {
                 movieDAO.insertAll(movie);
             }
+            latch.countDown();
         }).start();
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void deleteAllMovies(List<Movie> movies) {
-        new Thread(() ->{
-            for (Movie movie : movies) {
-                movieDAO.delete(movie);
-            }
+    public void DeleteMovie(Movie movie) {
+        CountDownLatch latch = new CountDownLatch(1);
+        new Thread(() -> {
+            movieDAO.delete(movie);
+            latch.countDown();
         }).start();
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            Log.d("TEST", e.toString());
+        }
+    }
+
+    private void CleanDB() {
+        new Thread(movieDAO::CleanDB).start();
+    }
+
+
+    public List<Movie> GetSynchronisedMovies() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netWorkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if (netWorkInfo == null)
+            return this.GetPopularMoviesFromDB();
+        else
+            try {
+                List<Movie> list = apiConnection.getPopularMovies();
+                CleanDB();
+                insertAllMoviesInDB(list);
+                Toast toast = Toast.makeText(context,"Movies stored to local storage.", Toast.LENGTH_SHORT);
+                toast.show();
+                return list;
+            } catch (Exception e) {
+                Log.d("TEST", e.toString());
+                return null;
+            }
     }
 
 
