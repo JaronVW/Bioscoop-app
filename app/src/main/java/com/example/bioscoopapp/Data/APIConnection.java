@@ -11,6 +11,8 @@ import java.util.concurrent.CountDownLatch;
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Domain.MovieDetail;
 import com.example.bioscoopapp.Domain.Page;
+import com.example.bioscoopapp.Domain.RequestToken;
+import com.example.bioscoopapp.Domain.SessionToken;
 
 import retrofit2.Call;
 import retrofit2.Response;
@@ -64,7 +66,7 @@ public class APIConnection {
 
     public MovieDetail GetMovieDetails(String movieID) {
         CountDownLatch latch = new CountDownLatch(1);
-        MovieDetail[] movie = {null};
+        final MovieDetail[] movie = new MovieDetail[1];
         // array that contains the movie and countdown latch used to wait for the thread to finish
         new Thread(() -> {
             try {
@@ -89,4 +91,62 @@ public class APIConnection {
         }
 
     }
+
+    public RequestToken GetRequestToken(String movieID) {
+        CountDownLatch latch = new CountDownLatch(1);
+        RequestToken[] requestToken = {null};
+        // array that contains the request token and countdown latch used to wait for the thread to finish
+        new Thread(() -> {
+            try {
+                Call<RequestToken> callSync = apiCalls.getRequestToken(apiKey.getAPI_KEY());
+                Response<RequestToken> response = callSync.execute();
+                System.out.println(response);
+                requestToken[0] = response.body();
+                latch.countDown();
+
+            } catch (IOException e) {
+                Log.d(TAG, e.toString());
+            }
+        }).start();
+        // api fetch gets executed in new thread
+        try {
+            latch.await();
+            return requestToken[0];
+            // returns object after countdown has been called
+        } catch (InterruptedException e) {
+            Log.d(TAG, e.toString());
+            return null;
+        }
+
+    }
+
+    public SessionToken GetSessionToken(String movieID, RequestToken requestToken) {
+        CountDownLatch latch = new CountDownLatch(1);
+        final SessionToken[] sessionToken = new SessionToken[1];
+        // array that contains the sessionToken and countdown latch used to wait for the thread to finish
+        new Thread(() -> {
+            try {
+                Call<SessionToken> callSync = apiCalls.getSessionToken(movieID, requestToken);
+                Response<SessionToken> response = callSync.execute();
+                System.out.println(response);
+                sessionToken[0] = response.body();
+                latch.countDown();
+
+            } catch (IOException e) {
+                Log.d(TAG, e.toString());
+            }
+        }).start();
+        // api fetch gets executed in new thread
+        try {
+            latch.await();
+            return sessionToken[0];
+            // returns object after countdown has been called
+        } catch (InterruptedException e) {
+            Log.d(TAG, e.toString());
+            return null;
+        }
+
+    }
+
+
 }

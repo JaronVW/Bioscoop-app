@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,10 +14,13 @@ import android.widget.Toast;
 
 import com.example.bioscoopapp.Data.RecyclerViewInterface;
 import com.example.bioscoopapp.Domain.Movie;
+import com.example.bioscoopapp.Logic.MovieManager;
 import com.example.bioscoopapp.Logic.MovieRepository;
 import com.example.bioscoopapp.R;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
@@ -39,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         this.repo = new MovieRepository(getApplicationContext());
         this.movies = (ArrayList<Movie>) this.repo.GetSynchronisedMovies();
 
-        getApplicationContext().deleteDatabase("App_database");
 
 
         //Storing list of movies inside recyclerview...
@@ -53,6 +56,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         toast.show();
 
         Log.d(LOG_TAG, "List of movies opened!");
+
+
+
     }
 
 

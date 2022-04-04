@@ -14,5 +14,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract MovieDAO movieDAO();
     public abstract GenreDAO genreDAO();
+    public abstract MovieListDAO movieListDAO();
+    public abstract MoviesInListDAO moviesInListDAO();
 
 }

@@ -4,11 +4,12 @@ package com.example.bioscoopapp.Domain;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.Entity;
+
 import java.util.List;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 
 public class MovieDetail implements Parcelable {
 
@@ -20,6 +21,7 @@ public class MovieDetail implements Parcelable {
     private Integer budget;
     @SerializedName("genres")
     @Expose
+
     private List<Genre> genres = null;
     @SerializedName("homepage")
     @Expose
