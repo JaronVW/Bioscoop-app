@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     private RecyclerView recyclerView;
     private MovieAdapter adapter;
     private ArrayList<Movie> movies;
-    private ArrayList<Movie> dbMovies;
     private MovieRepository repo;
 
 
@@ -38,8 +37,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
         //Getting list of movies...
         this.repo = new MovieRepository(getApplicationContext());
-        this.movies = (ArrayList<Movie>) this.repo.GetPopularMoviesFromAPI();
-        this.dbMovies = (ArrayList<Movie>) repo.GetPopularMoviesFromDB();
+        this.movies = (ArrayList<Movie>) this.repo.GetSynchronisedMovies();
+
+        getApplicationContext().deleteDatabase("App_database");
 
 
         //Storing list of movies inside recyclerview...
