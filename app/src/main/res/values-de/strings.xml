@@ -14,7 +14,6 @@
     <string name="preferences_text">Einstellungen</string>
     <string name="a_language_selector_text">Eine Sprachauswahl.</string>
     <string name="light_mode_text">Lichtmodus</string>
-    <string name="language_summary">Wählen Sie eine Sprache aus, in der die App angezeigt werden soll.</string>
     <string name="dark_mode_text">Dunkler Modus</string>
     <string name="dark_mode_summary">Schalten Sie den Dunkelmodus ein, um nachts bequemer lesen zu können.</string>
     <string name="app_appearance_text">App-Erscheinungsbild</string>

@@ -14,7 +14,6 @@
     <string name="preferences_text">Voorkeuren</string>
     <string name="a_language_selector_text">Een taal kiezer.</string>
     <string name="light_mode_text">Licht modus</string>
-    <string name="language_summary">Kies een taal om de app in te gebruiken.</string>
     <string name="dark_mode_text">Donkere modus</string>
     <string name="dark_mode_summary">Schakel de donkere modus in voor comfortabeler lezen \'s nachts.</string>
     <string name="app_appearance_text">Uiterlijk app</string>

@@ -13,7 +13,6 @@
     <string name="preferences_text">Preferences</string>
     <string name="a_language_selector_text">A language selector.</string>
     <string name="light_mode_text">Light mode</string>
-    <string name="language_summary">Select a language to view the app in.</string>
     <string name="dark_mode_text">Dark mode</string>
     <string name="dark_mode_summary">Turn on dark mode for more comfortable reading at night.</string>
     <string name="app_appearance_text">App appearance</string>
@@ -35,4 +34,5 @@
         <item>es</item>
         <item>ru</item>
     </string-array>
+    <string name="language_summary" translatable="false">Language, Taal, Sprache, Langue, Idioma, Язык.</string>
 </resources>

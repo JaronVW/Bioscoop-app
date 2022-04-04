@@ -14,7 +14,6 @@
     <string name="preferences_text">Настройки</string>
     <string name="a_language_selector_text">Селектор языка.</string>
     <string name="light_mode_text">Легкий режим</string>
-    <string name="language_summary">Выберите язык для просмотра приложения.</string>
     <string name="dark_mode_text">Темный режим</string>
     <string name="dark_mode_summary">Включите темный режим для более комфортного чтения ночью.</string>
     <string name="app_appearance_text">Внешний вид приложения</string>

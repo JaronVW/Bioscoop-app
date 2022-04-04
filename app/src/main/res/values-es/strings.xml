@@ -14,7 +14,6 @@
     <string name="preferences_text">Preferencias</string>
     <string name="a_language_selector_text">Un selector de idioma.</string>
     <string name="light_mode_text">Modo de luz</string>
-    <string name="language_summary">Seleccione un idioma para ver la aplicación.</string>
     <string name="dark_mode_text">modo oscuro</string>
     <string name="dark_mode_summary">Activa el modo oscuro para una lectura más cómoda por la noche.</string>
     <string name="app_appearance_text">apariencia de la aplicación</string>
