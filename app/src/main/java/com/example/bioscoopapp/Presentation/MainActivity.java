@@ -9,14 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.bioscoopapp.Data.DatabaseClient;
 import com.example.bioscoopapp.Data.RecyclerViewInterface;
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Logic.MovieRepository;
 import com.example.bioscoopapp.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
@@ -38,8 +36,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         //Getting list of movies...
         this.repo = new MovieRepository(getApplicationContext());
         this.movies = (ArrayList<Movie>) repo.GetSynchronisedMovies();
-//        this.dbMovies = (ArrayList<Movie>) repo.GetPopularMoviesFromDB();
 
+
+//        getApplicationContext().deleteDatabase("App_database");
 
         //Storing list of movies inside recyclerview...
         this.recyclerView = findViewById(R.id.movies_recyclerview);
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         this.adapter = new MovieAdapter(this, movies, this);
         this.recyclerView.setAdapter(this.adapter);
 
-        Toast toast = Toast.makeText(this, this.movies.size() + " movies loaded.", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), this.movies.size() + " movies loaded.", Toast.LENGTH_SHORT);
         toast.show();
 
         Log.d(LOG_TAG, "List of movies opened!");
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     public void onItemClick(int position) {
         Log.d(LOG_TAG, "Movie clicked!");
         Intent intent = new Intent(this, MovieDetailsActivity.class);
-        intent.putExtra("MovieID", this.movies.get(position).getId());
+        intent.putExtra("MovieID", this.movies.get(position).getMovieID());
         startActivity(intent);
     }
 }

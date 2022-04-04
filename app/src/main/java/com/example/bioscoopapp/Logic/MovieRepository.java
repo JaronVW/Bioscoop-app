@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.bioscoopapp.Data.APIConnection;
 import com.example.bioscoopapp.Data.DatabaseClient;
@@ -91,6 +92,8 @@ public class MovieRepository {
                 List<Movie> list = apiConnection.getPopularMovies();
                 CleanDB();
                 insertAllMoviesInDB(list);
+                Toast toast = Toast.makeText(context,"Movies stored to local storage.", Toast.LENGTH_SHORT);
+                toast.show();
                 return list;
             } catch (Exception e) {
                 Log.d("TEST", e.toString());

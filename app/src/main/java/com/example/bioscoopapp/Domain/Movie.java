@@ -8,16 +8,11 @@ import android.os.Parcelable;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverter;
-import androidx.room.TypeConverters;
 
-import java.lang.reflect.Type;
 import java.util.List;
 
-import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.reflect.TypeToken;
 
 @Entity(tableName = "Movie")
 //@TypeConverters({GenreTypeConverters.class})
@@ -39,7 +34,7 @@ public class Movie implements Parcelable {
     @SerializedName("id")
     @Expose
     @PrimaryKey
-    private Integer id;
+    private Integer movieID;
 
     @SerializedName("original_language")
     @Expose
@@ -81,14 +76,15 @@ public class Movie implements Parcelable {
     @Expose
     private Integer voteCount;
 
+
     protected Movie(Parcel in) {
         byte tmpAdult = in.readByte();
         adult = tmpAdult == 0 ? null : tmpAdult == 1;
         backdropPath = in.readString();
         if (in.readByte() == 0) {
-            id = null;
+            movieID = null;
         } else {
-            id = in.readInt();
+            movieID = in.readInt();
         }
         originalLanguage = in.readString();
         originalTitle = in.readString();
@@ -154,12 +150,12 @@ public class Movie implements Parcelable {
         this.genreIds = genreIds;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getMovieID() {
+        return movieID;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setMovieID(Integer movieID) {
+        this.movieID = movieID;
     }
 
     public String getOriginalLanguage() {
@@ -260,7 +256,7 @@ public class Movie implements Parcelable {
         sb.append(',');
         sb.append("id");
         sb.append('=');
-        sb.append(((this.id == null)?"<null>":this.id));
+        sb.append(((this.movieID == null)?"<null>":this.movieID));
         sb.append(',');
         sb.append("originalLanguage");
         sb.append('=');
@@ -319,11 +315,11 @@ public class Movie implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeByte((byte) (adult == null ? 0 : adult ? 1 : 2));
         parcel.writeString(backdropPath);
-        if (id == null) {
+        if (movieID == null) {
             parcel.writeByte((byte) 0);
         } else {
             parcel.writeByte((byte) 1);
-            parcel.writeInt(id);
+            parcel.writeInt(movieID);
         }
         parcel.writeString(originalLanguage);
         parcel.writeString(originalTitle);
