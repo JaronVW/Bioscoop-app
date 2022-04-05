@@ -12,31 +12,34 @@ import java.time.LocalDate;
 
 @Entity
 public class MovieList {
+
     @PrimaryKey
-    private int movieListID;
+    private transient int movieListID;
 
-    @ColumnInfo(defaultValue =  "CURRENT_TIMESTAMP" )
-    private String creationDate;
-
+    @ColumnInfo(defaultValue = "CURRENT_TIMESTAMP")
+    private transient String creationDate;
 
     private String name;
 
+    private String description;
+
+    private String language;
+
     public int getMovieListID() {
         return movieListID;
-    }
-
-    public String getCreationDate() {
-        return creationDate;
     }
 
     public void setMovieListID(int movieListID) {
         this.movieListID = movieListID;
     }
 
+    public String getCreationDate() {
+        return creationDate;
+    }
+
     public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
-
 
     public String getName() {
         return name;
@@ -44,5 +47,21 @@ public class MovieList {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }
