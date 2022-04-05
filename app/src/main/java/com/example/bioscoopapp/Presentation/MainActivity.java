@@ -51,10 +51,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         SharedPreferences sharedPreferences = this.getSharedPreferences(
                 "com.example.app", Context.MODE_PRIVATE);
         String langCode = sharedPreferences.getString("LanguageKey", "No previous language.");
-        Log.d(LOG_TAG, langCode);
+        Log.d(LOG_TAG, "Previously selected language: " + langCode);
         LanguageManager languageManager = new LanguageManager(this);
         languageManager.updateResource(String.valueOf(langCode));
-
 
         //Storing list of movies inside recyclerview...
         this.recyclerView = findViewById(R.id.movies_recyclerview);
@@ -67,9 +66,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         toast.show();
 
         Log.d(LOG_TAG, "List of movies opened!");
-
-
-
     }
 
 

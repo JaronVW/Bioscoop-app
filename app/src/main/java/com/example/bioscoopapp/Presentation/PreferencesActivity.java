@@ -19,6 +19,8 @@ public class PreferencesActivity extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Log.d(LOG_TAG, "Preferences activity opened.");
+
         addPreferencesFromResource(R.xml.preferences);
         ListPreference languageSelector =
                 (ListPreference) getPreferenceScreen().findPreference("LanguageSelector");
