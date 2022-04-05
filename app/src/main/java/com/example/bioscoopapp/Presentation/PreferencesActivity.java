@@ -1,14 +1,22 @@
 package com.example.bioscoopapp.Presentation;
 
+import android.app.UiModeManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.SwitchPreference;
 import android.util.Log;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.bioscoopapp.Logic.LanguageManager;
 import com.example.bioscoopapp.R;
+
+import org.intellij.lang.annotations.Language;
 
 public class PreferencesActivity extends PreferenceActivity {
 
@@ -21,7 +29,10 @@ public class PreferencesActivity extends PreferenceActivity {
 
         Log.d(LOG_TAG, "Preferences activity opened.");
 
+        //Adding preferences to the screen...
         addPreferencesFromResource(R.xml.preferences);
+
+        //Creating a language selector and giving it functionality...
         ListPreference languageSelector =
                 (ListPreference) getPreferenceScreen().findPreference("LanguageSelector");
         LanguageManager languageManager = new LanguageManager(this);
@@ -31,6 +42,21 @@ public class PreferencesActivity extends PreferenceActivity {
             recreate();
             saveLang(String.valueOf(newValue));
             return true;
+        });
+
+        SwitchPreference darkModeSwitch = (SwitchPreference) findPreference("DarkModeSwitch");
+        UiModeManager uiMode = (UiModeManager) getSystemService(UI_MODE_SERVICE);
+        darkModeSwitch.setOnPreferenceChangeListener((preference, o) -> {
+            //Checking the state of the switch and applying the opposite...
+            darkModeSwitch.setChecked(!darkModeSwitch.isChecked());
+
+            //If the switch is checked, turn on dark mode. Otherwise, turn it off.
+            if (darkModeSwitch.isChecked()) {
+                uiMode.setNightMode(UiModeManager.MODE_NIGHT_YES);
+            } else {
+                uiMode.setNightMode(UiModeManager.MODE_NIGHT_NO);
+            }
+            return false;
         });
     }
 

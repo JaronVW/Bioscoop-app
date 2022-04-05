@@ -11,6 +11,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/app_appearance_text">
         <SwitchPreference
+            android:key="DarkModeSwitch"
             android:title="@string/dark_mode_text"
             android:summary="@string/dark_mode_summary"
             android:entries="@array/languages_array">
