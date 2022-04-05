@@ -27,6 +27,14 @@ public class PreferencesActivity extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Retrieving language from previous session...
+        SharedPreferences sharedPreferences = this.getSharedPreferences(
+                "com.example.app", Context.MODE_PRIVATE);
+        String langCode = sharedPreferences.getString("LanguageKey", "No previous language.");
+        Log.d(LOG_TAG, "Previously selected language: " + langCode);
+        LanguageManager languageManager = new LanguageManager(this);
+        languageManager.updateResource(String.valueOf(langCode));
+
         Log.d(LOG_TAG, "Preferences activity opened.");
 
         //Adding preferences to the screen...
@@ -35,7 +43,6 @@ public class PreferencesActivity extends PreferenceActivity {
         //Creating a language selector and giving it functionality...
         ListPreference languageSelector =
                 (ListPreference) getPreferenceScreen().findPreference("LanguageSelector");
-        LanguageManager languageManager = new LanguageManager(this);
         languageSelector.setOnPreferenceChangeListener((preference, newValue) -> {
             Log.d(LOG_TAG, "Selected language: " + newValue);
             languageManager.updateResource(String.valueOf(newValue));
