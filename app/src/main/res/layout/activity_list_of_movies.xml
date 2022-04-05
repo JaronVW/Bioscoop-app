@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".Presentation.MainActivity" >
 
+    <EditText
+        android:id="@+id/search_movies"
+        android:layout_width="252dp"
+        android:layout_height="49dp"
+        android:hint="@string/search_movies"
+        app:layout_constraintBottom_toTopOf="@+id/movies_recyclerview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.279"
+        app:layout_constraintStart_toEndOf="@+id/movies_filter_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.727" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movies_recyclerview"
         android:layout_width="match_parent"
@@ -31,4 +43,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
     </TextView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

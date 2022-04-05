@@ -19,4 +19,5 @@
     <string name="app_appearance_text">Внешний вид приложения</string>
     <string name="text_appearance_text">Оригинальный текст</string>
     <string name="an_icon_of_a_filter" translatable="false">Значок фильтра.</string>
+    <string name="search_movies">Поиск</string>
 </resources>
