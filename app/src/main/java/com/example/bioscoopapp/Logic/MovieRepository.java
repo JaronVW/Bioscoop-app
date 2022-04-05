@@ -77,7 +77,16 @@ public class MovieRepository {
     }
 
     private void CleanDB() {
-        new Thread(movieDAO::CleanDB).start();
+        CountDownLatch latch = new CountDownLatch(1);
+        new Thread(() -> {
+            movieDAO.CleanDB();
+            latch.countDown();
+        }).start();
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            Log.d("TEST", e.toString());
+        }
     }
 
 
