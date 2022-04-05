@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class MovieList {
 
     @PrimaryKey
-    private transient int movieListID;
+    private int movieListID;
 
     @ColumnInfo(defaultValue = "CURRENT_TIMESTAMP")
     private transient String creationDate;
