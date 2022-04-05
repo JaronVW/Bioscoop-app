@@ -92,7 +92,7 @@ public class APIConnection {
 
     }
 
-    public RequestToken GetRequestToken(String movieID) {
+    public RequestToken GetRequestToken() {
         CountDownLatch latch = new CountDownLatch(1);
         RequestToken[] requestToken = {null};
         // array that contains the request token and countdown latch used to wait for the thread to finish
@@ -120,13 +120,13 @@ public class APIConnection {
 
     }
 
-    public SessionToken GetSessionToken(String movieID, RequestToken requestToken) {
+    public SessionToken GetSessionToken(RequestToken requestToken) {
         CountDownLatch latch = new CountDownLatch(1);
         final SessionToken[] sessionToken = new SessionToken[1];
         // array that contains the sessionToken and countdown latch used to wait for the thread to finish
         new Thread(() -> {
             try {
-                Call<SessionToken> callSync = apiCalls.getSessionToken(movieID, requestToken);
+                Call<SessionToken> callSync = apiCalls.getSessionToken(apiKey.getAPI_KEY(),requestToken);
                 Response<SessionToken> response = callSync.execute();
                 System.out.println(response);
                 sessionToken[0] = response.body();
