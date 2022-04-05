@@ -1,67 +1,46 @@
+
 package com.example.bioscoopapp.Domain;
 
-import android.os.Build;
+import androidx.room.Ignore;
 
-import androidx.annotation.RequiresApi;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
+import java.util.List;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-import java.time.Clock;
-import java.time.LocalDate;
 
-@Entity
 public class MovieList {
 
-    @PrimaryKey
-    private int movieListID;
-
-    @ColumnInfo(defaultValue = "CURRENT_TIMESTAMP")
-    private transient String creationDate;
-
-    private String name;
-
+    @SerializedName("created_by")
+    @Expose
+    private String createdBy;
+    @SerializedName("description")
+    @Expose
     private String description;
+    @SerializedName("favorite_count")
+    @Expose
+    private Integer favoriteCount;
+    @SerializedName("id")
+    @Expose
+    private String id;
+    @SerializedName("items")
+    @Expose
+    @Ignore
+    private List<Movie> movies = null;
+    @SerializedName("item_count")
+    @Expose
+    private Integer itemCount;
+    @SerializedName("iso_639_1")
+    @Expose
+    private String iso6391;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("poster_path")
+    @Expose
+    private String posterPath;
 
-    private String language;
 
-    public int getMovieListID() {
-        return movieListID;
-    }
 
-    public void setMovieListID(int movieListID) {
-        this.movieListID = movieListID;
-    }
 
-    public String getCreationDate() {
-        return creationDate;
-    }
 
-    public void setCreationDate(String creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
 }

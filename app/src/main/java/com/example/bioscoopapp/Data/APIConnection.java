@@ -3,6 +3,8 @@ package com.example.bioscoopapp.Data;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.concurrent.CountDownLatch;
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Domain.MovieDetail;
 import com.example.bioscoopapp.Domain.MovieList;
+import com.example.bioscoopapp.Domain.MovieListResponse;
 import com.example.bioscoopapp.Domain.Page;
 import com.example.bioscoopapp.Domain.RequestToken;
 import com.example.bioscoopapp.Domain.SessionToken;
@@ -94,18 +97,26 @@ public class APIConnection {
 
     }
 
-//    public boolean addList(MovieList movieList){
-//        Call<Boolean> call = apiCalls.postMovieList(apiKey.getAPI_KEY(),apiKey.getSession_ID(),movieList).enqueue(new Callback<Boolean>() {
-//            @Override
-//            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Boolean> call, Throwable t) {
-//
-//            }
-//        });
-//    }
+    public boolean addList(MovieList movieList){
+        try {
+            Call<MovieListResponse> call = apiCalls.postMovieList(apiKey.getAPI_KEY(), apiKey.getSession_ID(), movieList);
+            call.enqueue(new Callback<MovieListResponse>() {
+                @Override
+                public void onResponse(Call<MovieListResponse> call, Response<MovieListResponse> response) {
+                    Log.d(TAG, "List with id" + response.body().getListId() + " added!");
+                }
+
+                @Override
+                public void onFailure(Call<MovieListResponse> call, Throwable t) {
+                    Log.d(TAG, t.toString());
+                }
+            });
+            return true;
+        }
+        catch (Exception e){
+            Log.d(TAG, e.toString());
+            return false;
+        }
+    }
 
 }
