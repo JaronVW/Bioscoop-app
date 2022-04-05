@@ -1,5 +1,6 @@
 package com.example.bioscoopapp.Data;
 
+import com.example.bioscoopapp.Domain.MovieList;
 import com.example.bioscoopapp.Domain.RequestToken;
 import com.example.bioscoopapp.Domain.MovieDetail;
 import com.example.bioscoopapp.Domain.Page;
@@ -13,16 +14,14 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APICalls  {
+
     @GET("movie/popular")
     Call<Page> getPopularMovies(@Query("api_key") String api_key);
 
     @GET("movie/{movieID}")
     Call<MovieDetail> getMovieDetails(@Path("movieID") String movieID, @Query("api_key") String api_key);
 
-    @GET("authentication/token/new")
-    Call<RequestToken> getRequestToken(@Query("api_key") String api_key);
-
-    @HTTP(method = "GET", path = "authentication/token/new", hasBody = true)
-    Call<SessionToken> getSessionToken(@Query("api_key") String api_key,@Body RequestToken requestToken);
+    @HTTP(method = "POST", path = "https://api.themoviedb.org/3/list", hasBody = true)
+    Call<Boolean> postMovieList(@Query("api_key") String api_key,@Query("session_id") String session_id, @Body MovieList movieList);
 
 }

@@ -59,12 +59,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
         Log.d(LOG_TAG, "List of movies opened!");
 
-        RequestToken requestToken = new APIConnection().GetRequestToken();
-        System.out.println(requestToken.getRequestToken());
-        System.out.println(new APIConnection().GetSessionToken(requestToken));
-
-
-
     }
 
 
