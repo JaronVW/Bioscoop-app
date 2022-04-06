@@ -5,7 +5,6 @@ import androidx.room.RoomDatabase;
 
 import com.example.bioscoopapp.Domain.Genre;
 import com.example.bioscoopapp.Domain.Movie;
-import com.example.bioscoopapp.Domain.MovieGenres;
 import com.example.bioscoopapp.Domain.MovieList;
 import com.example.bioscoopapp.Domain.MoviesInList;
 

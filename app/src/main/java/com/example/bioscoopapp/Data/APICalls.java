@@ -1,6 +1,9 @@
 package com.example.bioscoopapp.Data;
 
+import com.example.bioscoopapp.Domain.Account;
+import com.example.bioscoopapp.Domain.MovieList;
 import com.example.bioscoopapp.Domain.MovieListCreator;
+import com.example.bioscoopapp.Domain.MovieListPage;
 import com.example.bioscoopapp.Domain.MovieListResponse;
 import com.example.bioscoopapp.Domain.MovieDetail;
 import com.example.bioscoopapp.Domain.Page;
@@ -28,5 +31,13 @@ public interface APICalls  {
     @POST("list")
     Call<MovieListResponse> postMovieList(@Query("api_key") String api_key, @Query("session_id") String session_id, @Body MovieListCreator list);
 
+    @GET("list/{list_id}")
+    Call<MovieList> getMovieList(@Path("list_id") int list_id, @Query("api_key") String api_key);
+
+    @GET("account")
+    Call<Account> getAccount(@Query("api_key") String api_key, @Query("session_id") String session_id);
+
+    @GET("account/{account_id}/lists")
+    Call<MovieListPage> getAccountLists(@Path("account_id") int account_id, @Query("api_key") String api_key, @Query("session_id") String session_id);
 
 }

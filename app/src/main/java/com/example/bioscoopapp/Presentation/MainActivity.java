@@ -22,8 +22,9 @@ import android.widget.Toast;
 
 import com.example.bioscoopapp.Data.APIConnection;
 import com.example.bioscoopapp.Data.RecyclerViewInterface;
+import com.example.bioscoopapp.Domain.Account;
 import com.example.bioscoopapp.Domain.Movie;
-import com.example.bioscoopapp.Domain.MovieListCreator;
+import com.example.bioscoopapp.Domain.MovieList;
 import com.example.bioscoopapp.Logic.LanguageManager;
 import com.example.bioscoopapp.Logic.MovieListRepository;
 import com.example.bioscoopapp.Logic.MovieManager;
@@ -180,11 +181,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         });
 
 
-        MovieListRepository apiConnection = new MovieListRepository(getApplicationContext());
-//        apiConnection.addList(new MovieListCreator("Test","Test","en"));
-        apiConnection.insertMovieList(new MovieListCreator("kaas","kaas","en"));
-
-
+        Account account = new APIConnection().getAccount();
+        System.out.println(new APIConnection().getAccountLists(account.getId()));
     }
 
 
