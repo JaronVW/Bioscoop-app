@@ -53,11 +53,13 @@ public class PreferencesActivity extends PreferenceActivity {
             return true;
         });
 
-        UiModeManager uiManager = (UiModeManager) getSystemService(Context.UI_MODE_SERVICE);
         SwitchPreference darkModeSwitch = (SwitchPreference) findPreference("DarkModeSwitch");
         darkModeSwitch.setOnPreferenceChangeListener((preference, o) -> {
             //Checking the state of the switch and applying the opposite...
             darkModeSwitch.setChecked(!darkModeSwitch.isChecked());
+
+            //Saving the state of the switch...
+            saveMode(darkModeSwitch.isChecked());
 
             //If the switch is checked, turn on dark mode. Otherwise, turn it off.
             if (darkModeSwitch.isChecked()) {
@@ -73,6 +75,12 @@ public class PreferencesActivity extends PreferenceActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences(
                 "com.example.app", Context.MODE_PRIVATE);
         sharedPreferences.edit().putString("LanguageKey", langCode).apply();
+    }
+
+    public void saveMode(boolean darkMode) {
+        SharedPreferences sharedPreferences = this.getSharedPreferences(
+                "com.example.app", Context.MODE_PRIVATE);
+        sharedPreferences.edit().putBoolean("IsDark", darkMode).apply();
     }
 
 }
