@@ -5,15 +5,18 @@ import android.util.Log;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Domain.MovieDetail;
-import com.example.bioscoopapp.Domain.MovieList;
 import com.example.bioscoopapp.Domain.Page;
 import com.example.bioscoopapp.Domain.RequestToken;
 import com.example.bioscoopapp.Domain.SessionToken;
+import com.example.bioscoopapp.Domain.Video;
+import com.example.bioscoopapp.Domain.VideoResult;
+import com.example.bioscoopapp.Presentation.MainActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,6 +26,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class APIConnection {
+
+    private static final String LOG_TAG =
+            MainActivity.class.getSimpleName() + " DEBUG";
 
     private final APIKey apiKey;
     private final APICalls apiCalls;
@@ -86,6 +92,36 @@ public class APIConnection {
         try {
             latch.await();
             return movie[0];
+            // returns object after countdown has been called
+        } catch (InterruptedException e) {
+            Log.d(TAG, e.toString());
+            return null;
+        }
+
+    }
+
+    public List<Video> getMovieVideos(String movieID) {
+        CountDownLatch latch = new CountDownLatch(1);
+        List<Video> videoList = new ArrayList<>();
+        // array that contains the videos and countdown latch used to wait for the thread to finish
+        new Thread(() -> {
+            try {
+                Call<VideoResult> callSync = apiCalls.getMovieVideo(movieID, apiKey.getAPI_KEY());
+                Response<VideoResult> response = callSync.execute();
+                System.out.println(response);
+                if (response.body() != null) {
+                    videoList.addAll(response.body().getResults());
+                }
+
+                latch.countDown();
+            } catch (IOException e) {
+                Log.d(TAG, e.toString());
+            }
+        }).start();
+        // api fetch gets executed in new thread
+        try {
+            latch.await();
+            return videoList;
             // returns object after countdown has been called
         } catch (InterruptedException e) {
             Log.d(TAG, e.toString());
