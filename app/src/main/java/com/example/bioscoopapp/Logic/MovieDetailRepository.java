@@ -11,7 +11,7 @@ public class MovieDetailRepository {
         this.apiConnection = new APIConnection();
     }
 
-    public MovieDetail getMovieDetails(String movieID){
-        return apiConnection.GetMovieDetails(movieID);
+    public MovieDetail getMovieDetails(String movieID, String langCode){
+        return apiConnection.GetMovieDetails(movieID, langCode);
     }
 }

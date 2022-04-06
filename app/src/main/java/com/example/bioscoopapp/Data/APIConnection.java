@@ -74,13 +74,13 @@ public class APIConnection {
 
     }
 
-    public MovieDetail GetMovieDetails(String movieID) {
+    public MovieDetail GetMovieDetails(String movieID, String langCode) {
         CountDownLatch latch = new CountDownLatch(1);
         final MovieDetail[] movie = new MovieDetail[1];
         // array that contains the movie and countdown latch used to wait for the thread to finish
         new Thread(() -> {
             try {
-                Call<MovieDetail> callSync = apiCalls.getMovieDetails(movieID, apiKey.getAPI_KEY());
+                Call<MovieDetail> callSync = apiCalls.getMovieDetails(movieID, apiKey.getAPI_KEY(), langCode);
                 Response<MovieDetail> response = callSync.execute();
                 System.out.println(response);
                 movie[0] = response.body();

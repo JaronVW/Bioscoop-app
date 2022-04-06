@@ -3,7 +3,9 @@ package com.example.bioscoopapp.Presentation;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -46,9 +48,14 @@ public class MovieDetailsActivity extends AppCompatActivity {
         //Getting the ID from the intent...
         int ID = getIntent().getExtras().getInt("MovieID");
 
+        //Creating a SharedPreferences object and getting the previous language...
+        SharedPreferences sharedPreferences = this.getSharedPreferences(
+                "com.example.app", Context.MODE_PRIVATE);
+        String langCode = sharedPreferences.getString("LanguageKey", "No previous language.");
+
         //Creating a MovieDetailRepository and using it to get a MovieDetails object with the ID...
         this.detailsRepo = new MovieDetailRepository();
-        this.movie = this.detailsRepo.getMovieDetails(String.valueOf(ID));
+        this.movie = this.detailsRepo.getMovieDetails(String.valueOf(ID), langCode);
 
         //Creating a MovieVideosRepository and using it to get a video object with the ID...
         this.videosRepo = new MovieVideosRepository();
