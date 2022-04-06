@@ -15,21 +15,19 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.bioscoopapp.Data.APIConnection;
 import com.example.bioscoopapp.Data.RecyclerViewInterface;
 import com.example.bioscoopapp.Domain.Movie;
-import com.example.bioscoopapp.Domain.RequestToken;
 import com.example.bioscoopapp.Logic.LanguageManager;
 import com.example.bioscoopapp.Logic.MovieManager;
 import com.example.bioscoopapp.Logic.MovieRepository;
 import com.example.bioscoopapp.R;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
@@ -44,10 +42,15 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     private int count = 0;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_movies);
+
 
         //Creating a SharedPreferences object and getting the previous language...
         SharedPreferences sharedPreferences = this.getSharedPreferences(
@@ -91,12 +94,75 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void afterTextChanged(Editable s) {
-                adapter = new MovieAdapter(getApplicationContext(), (ArrayList<Movie>)new MovieManager().searchFilter(movies, s.toString()), MainActivity.this);
+                adapter = new MovieAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().searchFilter(movies, s.toString()), MainActivity.this);
                 recyclerView.setAdapter(adapter);
             }
         });
 
+        Button dateSortButton = findViewById(R.id.sortDate);
+        Button titleSortButton = findViewById(R.id.sortTitle);
+        Button ratingSortButton = findViewById(R.id.sortRating);
+
+        dateSortButton.setOnClickListener(new View.OnClickListener() {
+            private boolean iscAsc;
+
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View view) {
+
+                if(iscAsc) {
+                    adapter = new MovieAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByDateASC(movies), MainActivity.this);
+                    recyclerView.setAdapter(adapter);
+                    iscAsc = false;
+                }else {
+                    adapter = new MovieAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByDateDESC(movies), MainActivity.this);
+                    recyclerView.setAdapter(adapter);
+                    iscAsc = true;
+                }
+            }
+        });
+
+        titleSortButton.setOnClickListener(new View.OnClickListener() {
+            private boolean iscAsc;
+
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View view) {
+
+                if(iscAsc) {
+                    adapter = new MovieAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByTitleASC(movies), MainActivity.this);
+                    recyclerView.setAdapter(adapter);
+                    iscAsc = false;
+                }else {
+                    adapter = new MovieAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByTitleDESC(movies), MainActivity.this);
+                    recyclerView.setAdapter(adapter);
+                    iscAsc = true;
+                }
+            }
+        });
+
+        ratingSortButton.setOnClickListener(new View.OnClickListener() {
+                private boolean iscAsc;
+
+                @RequiresApi(api = Build.VERSION_CODES.N)
+                @Override
+                public void onClick(View view) {
+
+                    if(iscAsc) {
+                        adapter = new MovieAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByRatingASC(movies), MainActivity.this);
+                        recyclerView.setAdapter(adapter);
+                        iscAsc = false;
+                    }else {
+                        adapter = new MovieAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByRatingDESC(movies), MainActivity.this);
+                        recyclerView.setAdapter(adapter);
+                        iscAsc = true;
+                    }
+                }
+        });
+
     }
+
+
 
 
     @Override

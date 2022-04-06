@@ -19,9 +19,6 @@ import com.example.bioscoopapp.Logic.MovieDetailRepository;
 import com.example.bioscoopapp.Logic.MovieRepository;
 import com.example.bioscoopapp.Logic.MovieVideosRepository;
 import com.example.bioscoopapp.R;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
