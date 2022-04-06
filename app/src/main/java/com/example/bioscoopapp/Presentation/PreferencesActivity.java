@@ -54,6 +54,10 @@ public class PreferencesActivity extends PreferenceActivity {
         });
 
         SwitchPreference darkModeSwitch = (SwitchPreference) findPreference("DarkModeSwitch");
+        boolean isDark = sharedPreferences.getBoolean("IsDark", false);
+        if (isDark) {
+            darkModeSwitch.setChecked(true);
+        }
         darkModeSwitch.setOnPreferenceChangeListener((preference, o) -> {
             //Checking the state of the switch and applying the opposite...
             darkModeSwitch.setChecked(!darkModeSwitch.isChecked());
