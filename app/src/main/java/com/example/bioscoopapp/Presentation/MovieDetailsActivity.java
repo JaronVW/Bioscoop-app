@@ -3,7 +3,9 @@ package com.example.bioscoopapp.Presentation;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -15,6 +17,7 @@ import com.example.bioscoopapp.Domain.MovieDetail;
 import com.example.bioscoopapp.Domain.Video;
 import com.example.bioscoopapp.Domain.VideoResult;
 import com.example.bioscoopapp.Logic.DataFormatter;
+import com.example.bioscoopapp.Logic.LanguageManager;
 import com.example.bioscoopapp.Logic.MovieDetailRepository;
 import com.example.bioscoopapp.Logic.MovieRepository;
 import com.example.bioscoopapp.Logic.MovieVideosRepository;
@@ -43,9 +46,18 @@ public class MovieDetailsActivity extends AppCompatActivity {
         //Getting the ID from the intent...
         int ID = getIntent().getExtras().getInt("MovieID");
 
+        //Creating a SharedPreferences object and getting the previous language...
+        SharedPreferences sharedPreferences = this.getSharedPreferences(
+                "com.example.app", Context.MODE_PRIVATE);
+        String langCode = sharedPreferences.getString("LanguageKey", "No previous language.");
+
         //Creating a MovieDetailRepository and using it to get a MovieDetails object with the ID...
         this.detailsRepo = new MovieDetailRepository();
-        this.movie = this.detailsRepo.getMovieDetails(String.valueOf(ID));
+        this.movie = this.detailsRepo.getMovieDetails(String.valueOf(ID), langCode);
+
+        //Retrieving language from previous session...
+        LanguageManager languageManager = new LanguageManager(this);
+        languageManager.updateResource(String.valueOf(langCode));
 
         //Creating a MovieVideosRepository and using it to get a video object with the ID...
         this.videosRepo = new MovieVideosRepository();
@@ -97,7 +109,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         languages.setText(this.formatter.getFormattedSpokenLanguages(this.movie.getSpokenLanguages()));
 
         TextView runtime = findViewById(R.id.movie_details_runtime);
-        runtime.setText(String.valueOf(this.formatter.getMinutesToText(this.movie.getRuntime())));
+        runtime.setText(String.valueOf(this.formatter.getMinutesToText(this.movie.getRuntime(), this)));
 
         TextView releaseDate = findViewById(R.id.movie_details_release_date);
         releaseDate.setText(this.movie.getReleaseDate());

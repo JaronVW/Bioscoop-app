@@ -19,6 +19,9 @@
     <string name="text_appearance_text">Text appearance</string>
     <string name="an_icon_of_a_filter">An icon of a filter.</string>
     <string name="search_movies">Search…</string>
+    <string name="hours_and_text">hours and</string>
+    <string name="minutes_text">minutes</string>
+
     <string-array name="languages_array">
         <item>English</item>
         <item>Nederlands</item>

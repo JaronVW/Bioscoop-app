@@ -20,4 +20,6 @@
     <string name="text_appearance_text">Texto de Uiterlijk</string>
     <string name="an_icon_of_a_filter" translatable="false">Un icono de un filtro.</string>
     <string name="search_movies" tools:ignore="TypographyEllipsis">Búsqueda...</string>
+    <string name="hours_and_text">horas y</string>
+    <string name="minutes_text">minutos</string>
 </resources>

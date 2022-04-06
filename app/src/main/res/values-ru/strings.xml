@@ -20,4 +20,6 @@
     <string name="text_appearance_text">Оригинальный текст</string>
     <string name="an_icon_of_a_filter" translatable="false">Значок фильтра.</string>
     <string name="search_movies">Поиск</string>
+    <string name="hours_and_text">часы и</string>
+    <string name="minutes_text">минуты</string>
 </resources>

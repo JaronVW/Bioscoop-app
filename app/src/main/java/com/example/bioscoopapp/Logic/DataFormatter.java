@@ -1,6 +1,9 @@
 package com.example.bioscoopapp.Logic;
 
+import android.content.Context;
+
 import com.example.bioscoopapp.Domain.SpokenLanguage;
+import com.example.bioscoopapp.R;
 
 import java.util.List;
 
@@ -21,9 +24,10 @@ public class DataFormatter {
         return s.toString();
     }
 
-    public String getMinutesToText(int minutes) {
+    public String getMinutesToText(int minutes, Context context) {
         int hours = minutes / 60;
         int remainingMinutes = minutes - (hours * 60);
-        return hours + " hours and " + remainingMinutes + " minutes.";
+        return hours + " " + context.getResources().getString(R.string.hours_and_text) + " " +
+                remainingMinutes + " " + context.getResources().getString(R.string.minutes_text) + ".";
     }
 }
