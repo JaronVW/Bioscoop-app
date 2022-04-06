@@ -9,6 +9,7 @@ import android.widget.Toast;
 import com.example.bioscoopapp.Data.APIConnection;
 import com.example.bioscoopapp.Data.DatabaseClient;
 import com.example.bioscoopapp.Data.MovieDAO;
+import com.example.bioscoopapp.Data.MovieListDAO;
 import com.example.bioscoopapp.Domain.Movie;
 
 import java.util.ArrayList;

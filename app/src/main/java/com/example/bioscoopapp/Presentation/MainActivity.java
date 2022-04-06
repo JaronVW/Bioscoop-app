@@ -16,7 +16,9 @@ import com.example.bioscoopapp.Data.APIConnection;
 import com.example.bioscoopapp.Data.RecyclerViewInterface;
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Domain.MovieList;
+import com.example.bioscoopapp.Domain.MovieListCreator;
 import com.example.bioscoopapp.Domain.RequestToken;
+import com.example.bioscoopapp.Logic.MovieListRepository;
 import com.example.bioscoopapp.Logic.MovieManager;
 import com.example.bioscoopapp.Logic.MovieRepository;
 import com.example.bioscoopapp.R;
@@ -59,12 +61,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         toast.show();
 
         Log.d(LOG_TAG, "List of movies opened!");
-        APIConnection apiConnection = new APIConnection();
-        MovieList movieList = new MovieList();
-        movieList.setName("Test");
-        movieList.setDescription("Test");
-        movieList.setName("en");
-        apiConnection.addList(movieList);
+        MovieListRepository movieListRepository = new MovieListRepository(getApplicationContext());
+        movieListRepository.addMovieListToAPI(new MovieListCreator("ListInApp","description","en"));
+        System.out.println();
     }
 
 

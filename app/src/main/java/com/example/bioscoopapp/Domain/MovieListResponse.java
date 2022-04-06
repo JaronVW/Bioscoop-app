@@ -16,7 +16,7 @@ public class MovieListResponse {
     private Integer statusCode;
     @SerializedName("list_id")
     @Expose
-    private Integer listId;
+    private Integer list_id;
 
     public String getStatusMessage() {
         return statusMessage;
@@ -42,12 +42,12 @@ public class MovieListResponse {
         this.statusCode = statusCode;
     }
 
-    public Integer getListId() {
-        return listId;
+    public Integer getList_id() {
+        return list_id;
     }
 
-    public void setListId(Integer listId) {
-        this.listId = listId;
+    public void setList_id(Integer list_id) {
+        this.list_id = list_id;
     }
 
 }
