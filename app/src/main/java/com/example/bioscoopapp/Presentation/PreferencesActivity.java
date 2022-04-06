@@ -3,10 +3,12 @@ package com.example.bioscoopapp.Presentation;
 import android.app.UiModeManager;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.util.Log;
 import android.widget.Toast;
@@ -51,17 +53,17 @@ public class PreferencesActivity extends PreferenceActivity {
             return true;
         });
 
+        UiModeManager uiManager = (UiModeManager) getSystemService(Context.UI_MODE_SERVICE);
         SwitchPreference darkModeSwitch = (SwitchPreference) findPreference("DarkModeSwitch");
-        UiModeManager uiMode = (UiModeManager) getSystemService(UI_MODE_SERVICE);
         darkModeSwitch.setOnPreferenceChangeListener((preference, o) -> {
             //Checking the state of the switch and applying the opposite...
             darkModeSwitch.setChecked(!darkModeSwitch.isChecked());
 
             //If the switch is checked, turn on dark mode. Otherwise, turn it off.
             if (darkModeSwitch.isChecked()) {
-                uiMode.setNightMode(UiModeManager.MODE_NIGHT_YES);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             } else {
-                uiMode.setNightMode(UiModeManager.MODE_NIGHT_NO);
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             }
             return false;
         });
