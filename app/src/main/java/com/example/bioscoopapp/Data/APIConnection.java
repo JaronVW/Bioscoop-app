@@ -1,6 +1,8 @@
 package com.example.bioscoopapp.Data;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import java.io.IOException;
@@ -43,13 +45,13 @@ public class APIConnection {
 
     }
 
-    public List<Movie> getPopularMovies() {
+    public List<Movie> getPopularMovies(String langCode) {
         CountDownLatch latch = new CountDownLatch(1);
         ArrayList<Movie> movieList = new ArrayList<>();
         // list that contains the movies and countdown latch used to wait for the thread to finish
         new Thread(() -> {
             try {
-                Call<Page> callSync = apiCalls.getPopularMovies(apiKey.getAPI_KEY());
+                Call<Page> callSync = apiCalls.getPopularMovies(apiKey.getAPI_KEY(), langCode);
                 Response<Page> response = callSync.execute();
 
                 if (response.body() != null) {

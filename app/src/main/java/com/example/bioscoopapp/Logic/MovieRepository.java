@@ -27,8 +27,8 @@ public class MovieRepository {
         movieDAO = DatabaseClient.getInstance(this.context).getAppDatabase().movieDAO();
     }
 
-    public List<Movie> GetPopularMoviesFromAPI() {
-        return apiConnection.getPopularMovies();
+    public List<Movie> GetPopularMoviesFromAPI(String langCode) {
+        return apiConnection.getPopularMovies(langCode);
     }
 
     public List<Movie> GetPopularMoviesFromDB() {
@@ -90,7 +90,7 @@ public class MovieRepository {
     }
 
 
-    public List<Movie> GetSynchronisedMovies() {
+    public List<Movie> GetSynchronisedMovies(String langCode) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netWorkInfo = connectivityManager.getActiveNetworkInfo();
 
@@ -98,7 +98,7 @@ public class MovieRepository {
             return this.GetPopularMoviesFromDB();
         else
             try {
-                List<Movie> list = apiConnection.getPopularMovies();
+                List<Movie> list = apiConnection.getPopularMovies(langCode);
                 CleanDB();
                 insertAllMoviesInDB(list);
                 Toast toast = Toast.makeText(context,"Movies stored to local storage.", Toast.LENGTH_SHORT);

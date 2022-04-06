@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     private MovieAdapter adapter;
     private ArrayList<Movie> movies;
     private MovieRepository repo;
+    private int count = 0;
 
 
     @Override
@@ -48,14 +49,16 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_movies);
 
-        //Getting list of movies...
-        this.repo = new MovieRepository(getApplicationContext());
-        this.movies = (ArrayList<Movie>) this.repo.GetSynchronisedMovies();
-
-        //Retrieving language from previous session...
+        //Creating a SharedPreferences object and getting the previous language...
         SharedPreferences sharedPreferences = this.getSharedPreferences(
                 "com.example.app", Context.MODE_PRIVATE);
         String langCode = sharedPreferences.getString("LanguageKey", "No previous language.");
+
+        //Getting list of movies...
+        this.repo = new MovieRepository(getApplicationContext());
+        this.movies = (ArrayList<Movie>) this.repo.GetSynchronisedMovies(langCode);
+
+        //Retrieving language from previous session...
         Log.d(LOG_TAG, langCode);
         LanguageManager languageManager = new LanguageManager(this);
         languageManager.updateResource(String.valueOf(langCode));

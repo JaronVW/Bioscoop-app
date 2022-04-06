@@ -34,5 +34,4 @@
             android:label="Settings"
             android:exported="false" />
     </application>
-
 </manifest>

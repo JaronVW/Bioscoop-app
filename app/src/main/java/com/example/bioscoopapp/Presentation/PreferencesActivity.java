@@ -2,6 +2,7 @@ package com.example.bioscoopapp.Presentation;
 
 import android.app.UiModeManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -87,4 +88,10 @@ public class PreferencesActivity extends PreferenceActivity {
         sharedPreferences.edit().putBoolean("IsDark", darkMode).apply();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }
