@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.example.bioscoopapp.Data.APIConnection;
 import com.example.bioscoopapp.Data.RecyclerViewInterface;
 import com.example.bioscoopapp.Domain.Account;
+import com.example.bioscoopapp.Domain.MediaID;
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Domain.MovieList;
 import com.example.bioscoopapp.Logic.LanguageManager;
@@ -32,6 +33,7 @@ import com.example.bioscoopapp.Logic.MovieRepository;
 import com.example.bioscoopapp.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -180,9 +183,9 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
             }
         });
 
+        MovieListRepository movieListRepository = new MovieListRepository(getApplicationContext());
+        movieListRepository.deleteMovieFromList(8197479, new MediaID(550));
 
-        Account account = new APIConnection().getAccount();
-        System.out.println(new APIConnection().getAccountLists(account.getId()));
     }
 
 

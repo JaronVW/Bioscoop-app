@@ -15,29 +15,37 @@ public class MovieList {
     @SerializedName("created_by")
     @Expose
     private String createdBy;
+
     @SerializedName("description")
     @Expose
     private String description;
+
     @SerializedName("favorite_count")
     @Expose
     private Integer favoriteCount;
+
     @SerializedName("id")
     @Expose
     @PrimaryKey
     private int id;
+
     @SerializedName("items")
     @Expose
     @Ignore
     private List<Movie> items = null;
+
     @SerializedName("item_count")
     @Expose
     private Integer itemCount;
+
     @SerializedName("iso_639_1")
     @Expose
     private String iso6391;
+
     @SerializedName("name")
     @Expose
     private String name;
+
     @SerializedName("poster_path")
     @Expose
     private String posterPath;
