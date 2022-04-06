@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         //Getting list of movies...
         this.repo = new MovieRepository(getApplicationContext());
         this.movies = (ArrayList<Movie>) this.repo.GetSynchronisedMovies(langCode);
-        finalMovies = movies;
+        ArrayList<Movie> finalMovies = new ArrayList<>(movies);
 
 
         //Retrieving language from previous session...
@@ -174,13 +174,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         });
 
         clearSortingOptionsButton.setOnClickListener(view -> {
-            try {
-                adapter = new MovieAdapter(getApplicationContext(), (ArrayList<Movie>) repo.GetPopularMoviesFromAPI(langCode), MainActivity.this);
                 recyclerView.setAdapter(adapter);
-            }catch (Exception e){
-                adapter = new MovieAdapter(getApplicationContext(), (ArrayList<Movie>) repo.GetPopularMoviesFromDB(), MainActivity.this);
-                recyclerView.setAdapter(adapter);
-            }
         });
 
         MovieListRepository movieListRepository = new MovieListRepository(getApplicationContext());

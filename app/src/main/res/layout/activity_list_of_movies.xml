@@ -8,27 +8,23 @@
 
     <EditText
         android:id="@+id/search_movies"
-        android:layout_width="252dp"
-        android:layout_height="49dp"
+        android:layout_width="0dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="8dp"
         android:hint="@string/search_movies"
-        app:layout_constraintBottom_toTopOf="@+id/movies_recyclerview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.279"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/movies_filter_icon"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.727" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movies_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="60dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@+id/clearSortingOptionsButton"></androidx.recyclerview.widget.RecyclerView>
 
     <TextView
         android:id="@+id/movies_filter_icon"
@@ -36,51 +32,72 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/ic_filters_icon"
         android:contentDescription="@string/an_icon_of_a_filter"
-        app:layout_constraintBottom_toTopOf="@+id/movies_recyclerview"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </TextView>
-
-    <Button
-        android:id="@+id/sortDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Date"
-        app:layout_constraintBottom_toTopOf="@+id/sortTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/search_movies"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/sortTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="title"
-        app:layout_constraintBottom_toTopOf="@+id/sortRating"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/sortDate"
-        app:layout_constraintTop_toBottomOf="@+id/sortDate" />
+        app:layout_constraintTop_toTopOf="parent"></TextView>
 
     <Button
         android:id="@+id/sortRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="56dp"
         android:text="Rating"
-        app:layout_constraintBottom_toTopOf="@+id/clearSortingOptionsButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/sortDate"
-        app:layout_constraintTop_toBottomOf="@+id/sortTitle" />
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/movies_recyclerview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_movies"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/sortDate"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Date"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/sortRating"
+        app:layout_constraintTop_toBottomOf="@+id/search_movies" />
+
+    <Button
+        android:id="@+id/sortTitle"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="title"
+        android:textSize="10sp"
+        app:layout_constraintStart_toEndOf="@+id/sortDate"
+        app:layout_constraintTop_toBottomOf="@+id/search_movies" />
 
     <Button
         android:id="@+id/clearSortingOptionsButton"
+        android:layout_width="70dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Clear"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/sortTitle"
+        app:layout_constraintTop_toBottomOf="@+id/search_movies" />
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Clear"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/sortDate"
-        app:layout_constraintTop_toBottomOf="@+id/sortRating" />
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Sort by:"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/movies_recyclerview"
+        app:layout_constraintEnd_toStartOf="@+id/sortRating"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
