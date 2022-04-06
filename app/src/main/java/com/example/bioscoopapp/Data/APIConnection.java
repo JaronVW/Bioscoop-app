@@ -9,6 +9,7 @@ import java.util.concurrent.CountDownLatch;
 
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Domain.MovieDetail;
+import com.example.bioscoopapp.Domain.MovieList;
 import com.example.bioscoopapp.Domain.MovieListCreator;
 import com.example.bioscoopapp.Domain.MovieListResponse;
 import com.example.bioscoopapp.Domain.Page;
@@ -127,12 +128,14 @@ public class APIConnection implements Listener {
 
     }
 
-    public void addList(MovieListCreator movieList) {
+    public int addList(MovieListCreator movieList) {
+        final int[] list_id = {0};
         Call<MovieListResponse> call = apiCalls.postMovieList(apiKey.getAPI_KEY(),apiKey.getSession_ID(),movieList);
         call.enqueue(new Callback<MovieListResponse>() {
             @Override
             public void onResponse(Call<MovieListResponse> call, Response<MovieListResponse> response) {
                 System.out.println(response.body().getListId());
+                list_id[0] = response.body().getListId();
             }
 
             @Override
@@ -140,10 +143,17 @@ public class APIConnection implements Listener {
                 System.out.println(t.toString());
             }
         });
+        return list_id[0];
     }
+
+
 
     @Override
     public MovieListResponse onListCreateResponse() {
         return null;
+    }
+
+    public MovieList getMovieList() {
+
     }
 }

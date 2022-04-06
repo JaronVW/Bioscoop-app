@@ -25,6 +25,7 @@ import com.example.bioscoopapp.Data.RecyclerViewInterface;
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Domain.MovieListCreator;
 import com.example.bioscoopapp.Logic.LanguageManager;
+import com.example.bioscoopapp.Logic.MovieListRepository;
 import com.example.bioscoopapp.Logic.MovieManager;
 import com.example.bioscoopapp.Logic.MovieRepository;
 import com.example.bioscoopapp.R;
@@ -179,8 +180,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         });
 
 
-        APIConnection apiConnection = new APIConnection();
-        apiConnection.addList(new MovieListCreator("Test","Test","en"));
+        MovieListRepository apiConnection = new MovieListRepository(getApplicationContext());
+//        apiConnection.addList(new MovieListCreator("Test","Test","en"));
+        apiConnection.insertMovieList(new MovieListCreator("kaas","kaas","en"));
+
 
     }
 
