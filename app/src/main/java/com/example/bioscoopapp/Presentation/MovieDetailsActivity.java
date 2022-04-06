@@ -17,6 +17,7 @@ import com.example.bioscoopapp.Domain.MovieDetail;
 import com.example.bioscoopapp.Domain.Video;
 import com.example.bioscoopapp.Domain.VideoResult;
 import com.example.bioscoopapp.Logic.DataFormatter;
+import com.example.bioscoopapp.Logic.LanguageManager;
 import com.example.bioscoopapp.Logic.MovieDetailRepository;
 import com.example.bioscoopapp.Logic.MovieRepository;
 import com.example.bioscoopapp.Logic.MovieVideosRepository;
@@ -56,6 +57,10 @@ public class MovieDetailsActivity extends AppCompatActivity {
         //Creating a MovieDetailRepository and using it to get a MovieDetails object with the ID...
         this.detailsRepo = new MovieDetailRepository();
         this.movie = this.detailsRepo.getMovieDetails(String.valueOf(ID), langCode);
+
+        //Retrieving language from previous session...
+        LanguageManager languageManager = new LanguageManager(this);
+        languageManager.updateResource(String.valueOf(langCode));
 
         //Creating a MovieVideosRepository and using it to get a video object with the ID...
         this.videosRepo = new MovieVideosRepository();
