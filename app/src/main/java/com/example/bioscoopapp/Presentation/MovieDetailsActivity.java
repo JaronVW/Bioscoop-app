@@ -107,7 +107,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
         languages.setText(this.formatter.getFormattedSpokenLanguages(this.movie.getSpokenLanguages()));
 
         TextView runtime = findViewById(R.id.movie_details_runtime);
-        runtime.setText(String.valueOf(this.formatter.getMinutesToText(this.movie.getRuntime())));
+        runtime.setText(String.valueOf(this.formatter.getMinutesToText(this.movie.getRuntime(), this)));
 
         TextView releaseDate = findViewById(R.id.movie_details_release_date);
         releaseDate.setText(this.movie.getReleaseDate());

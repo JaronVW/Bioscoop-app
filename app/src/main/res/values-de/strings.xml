@@ -20,4 +20,6 @@
     <string name="text_appearance_text">Textdarstellung</string>
     <string name="an_icon_of_a_filter" translatable="false">Ein Symbol eines Filters.</string>
     <string name="search_movies">Suche…</string>
+    <string name="hours_and_text">stunden und</string>
+    <string name="minutes_text">minuten</string>
 </resources>
