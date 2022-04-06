@@ -1,22 +1,17 @@
 package com.example.bioscoopapp.Data;
 
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Domain.MovieDetail;
+import com.example.bioscoopapp.Domain.MovieListCreator;
+import com.example.bioscoopapp.Domain.MovieListResponse;
 import com.example.bioscoopapp.Domain.Page;
-import com.example.bioscoopapp.Domain.RequestToken;
-import com.example.bioscoopapp.Domain.SessionToken;
-import com.example.bioscoopapp.Domain.Video;
 import com.example.bioscoopapp.Domain.VideoResult;
 import com.example.bioscoopapp.Presentation.MainActivity;
 
@@ -27,7 +22,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class APIConnection {
+public class APIConnection implements Listener {
 
     private static final String LOG_TAG =
             MainActivity.class.getSimpleName() + " DEBUG";
@@ -45,7 +40,7 @@ public class APIConnection {
 
     }
 
-    public List<Movie> getPopularMovies(String langCode) {
+    public java.util.List getPopularMovies(String langCode) {
         CountDownLatch latch = new CountDownLatch(1);
         ArrayList<Movie> movieList = new ArrayList<>();
         // list that contains the movies and countdown latch used to wait for the thread to finish
@@ -102,9 +97,9 @@ public class APIConnection {
 
     }
 
-    public List<Video> getMovieVideos(String movieID) {
+    public java.util.List getMovieVideos(String movieID) {
         CountDownLatch latch = new CountDownLatch(1);
-        List<Video> videoList = new ArrayList<>();
+        java.util.List videoList = new ArrayList<>();
         // array that contains the videos and countdown latch used to wait for the thread to finish
         new Thread(() -> {
             try {
@@ -132,18 +127,23 @@ public class APIConnection {
 
     }
 
-//    public boolean addList(MovieList movieList){
-//        Call<Boolean> call = apiCalls.postMovieList(apiKey.getAPI_KEY(),apiKey.getSession_ID(),movieList).enqueue(new Callback<Boolean>() {
-//            @Override
-//            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Boolean> call, Throwable t) {
-//
-//            }
-//        });
-//    }
+    public void addList(MovieListCreator movieList) {
+        Call<MovieListResponse> call = apiCalls.postMovieList(apiKey.getAPI_KEY(),apiKey.getSession_ID(),movieList);
+        call.enqueue(new Callback<MovieListResponse>() {
+            @Override
+            public void onResponse(Call<MovieListResponse> call, Response<MovieListResponse> response) {
+                System.out.println(response.body().getListId());
+            }
 
+            @Override
+            public void onFailure(Call<MovieListResponse> call, Throwable t) {
+                System.out.println(t.toString());
+            }
+        });
+    }
+
+    @Override
+    public MovieListResponse onListCreateResponse() {
+        return null;
+    }
 }

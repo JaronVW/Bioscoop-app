@@ -20,15 +20,21 @@ public class MovieRepository {
     private final APIConnection apiConnection;
     private final MovieDAO movieDAO;
     private final Context context;
+    ConnectivityManager connectivityManager;
+    NetworkInfo netWorkInfo;
 
     public MovieRepository(Context context) {
         this.context = context;
         this.apiConnection = new APIConnection();
         movieDAO = DatabaseClient.getInstance(this.context).getAppDatabase().movieDAO();
+        connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        netWorkInfo= connectivityManager.getActiveNetworkInfo();
     }
 
     public List<Movie> GetPopularMoviesFromAPI(String langCode) {
-        return apiConnection.getPopularMovies(langCode);
+        if (netWorkInfo == null)
+            return apiConnection.getPopularMovies(langCode);
+        return null;
     }
 
     public List<Movie> GetPopularMoviesFromDB() {

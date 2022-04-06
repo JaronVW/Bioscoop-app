@@ -20,8 +20,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.bioscoopapp.Data.APIConnection;
 import com.example.bioscoopapp.Data.RecyclerViewInterface;
 import com.example.bioscoopapp.Domain.Movie;
+import com.example.bioscoopapp.Domain.MovieListCreator;
 import com.example.bioscoopapp.Logic.LanguageManager;
 import com.example.bioscoopapp.Logic.MovieManager;
 import com.example.bioscoopapp.Logic.MovieRepository;
@@ -175,6 +177,10 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                 recyclerView.setAdapter(adapter);
             }
         });
+
+
+        APIConnection apiConnection = new APIConnection();
+        apiConnection.addList(new MovieListCreator("Test","Test","en"));
 
     }
 
