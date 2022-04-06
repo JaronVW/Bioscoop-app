@@ -19,4 +19,5 @@
     <string name="app_appearance_text">Apparence de l\'application</string>
     <string name="text_appearance_text">Apparence du texte</string>
     <string name="an_icon_of_a_filter" translatable="false">Une icône d\'un filtre.</string>
+    <string name="search_movies">Chercher…</string>
 </resources>

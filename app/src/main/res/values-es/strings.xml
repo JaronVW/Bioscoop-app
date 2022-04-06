@@ -19,4 +19,5 @@
     <string name="app_appearance_text">apariencia de la aplicación</string>
     <string name="text_appearance_text">Texto de Uiterlijk</string>
     <string name="an_icon_of_a_filter" translatable="false">Un icono de un filtro.</string>
+    <string name="search_movies">Suche…</string>
 </resources>

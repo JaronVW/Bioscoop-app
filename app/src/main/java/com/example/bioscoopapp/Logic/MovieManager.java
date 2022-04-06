@@ -55,7 +55,7 @@ public class MovieManager {
     }
 
     public List<Movie> searchFilter(List<Movie> movies, String searchQuery) {
-        return movies.stream().filter(p -> p.getTitle().contains(searchQuery)).collect(Collectors.toList());
+        return movies.stream().filter(p -> p.getTitle().toLowerCase().contains(searchQuery)).collect(Collectors.toList());
     }
 
 }

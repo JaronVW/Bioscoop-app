@@ -19,4 +19,5 @@
     <string name="app_appearance_text">App-Erscheinungsbild</string>
     <string name="text_appearance_text">Textdarstellung</string>
     <string name="an_icon_of_a_filter" translatable="false">Ein Symbol eines Filters.</string>
+    <string name="search_movies">Suche…</string>
 </resources>
