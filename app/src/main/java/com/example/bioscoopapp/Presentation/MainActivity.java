@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     private RecyclerView recyclerView;
     private MovieAdapter adapter;
     private ArrayList<Movie> movies;
+    private ArrayList<Movie> finalMovies;
     private MovieRepository repo;
     private int count = 0;
 
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         //Getting list of movies...
         this.repo = new MovieRepository(getApplicationContext());
         this.movies = (ArrayList<Movie>) this.repo.GetSynchronisedMovies(langCode);
+        finalMovies = movies;
+
 
         //Retrieving language from previous session...
         Log.d(LOG_TAG, langCode);
@@ -102,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         Button dateSortButton = findViewById(R.id.sortDate);
         Button titleSortButton = findViewById(R.id.sortTitle);
         Button ratingSortButton = findViewById(R.id.sortRating);
+        Button clearSortingOptionsButton = findViewById(R.id.clearSortingOptionsButton);
 
         dateSortButton.setOnClickListener(new View.OnClickListener() {
             private boolean iscAsc;
@@ -125,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         titleSortButton.setOnClickListener(new View.OnClickListener() {
             private boolean iscAsc;
 
+
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
@@ -144,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         ratingSortButton.setOnClickListener(new View.OnClickListener() {
                 private boolean iscAsc;
 
+
                 @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
                 public void onClick(View view) {
@@ -158,6 +164,16 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                         iscAsc = true;
                     }
                 }
+        });
+
+        clearSortingOptionsButton.setOnClickListener(view -> {
+            try {
+                adapter = new MovieAdapter(getApplicationContext(), (ArrayList<Movie>) repo.GetPopularMoviesFromAPI(langCode), MainActivity.this);
+                recyclerView.setAdapter(adapter);
+            }catch (Exception e){
+                adapter = new MovieAdapter(getApplicationContext(), (ArrayList<Movie>) repo.GetPopularMoviesFromDB(), MainActivity.this);
+                recyclerView.setAdapter(adapter);
+            }
         });
 
     }
