@@ -89,7 +89,7 @@ public class MovieListsActivity extends AppCompatActivity implements RecyclerVie
     public void onItemClick(int position) {
         Log.d(LOG_TAG, "Movie clicked!");
         Intent intent = new Intent(this, MovieListActivity.class);
-        intent.putExtra("MovieID", this.MovieLists.get(position).getId());
+        intent.putExtra("listID", this.MovieLists.get(position).getId());
         startActivity(intent);
     }
 

@@ -11,6 +11,7 @@ import com.example.bioscoopapp.Data.DatabaseClient;
 import com.example.bioscoopapp.Data.MovieDAO;
 import com.example.bioscoopapp.Domain.Movie;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -48,10 +49,17 @@ public class MovieRepository {
             latch.await();
             return list;
         } catch (InterruptedException e) {
+
             e.printStackTrace();
             return null;
         }
 
+    }
+
+    public List<Movie> GetMovieListFromAPI(int list_id,String langcode) {
+        if (netWorkInfo != null)
+            return apiConnection.getMovieListDetails(list_id,langcode).getItems();
+        return null;
     }
 
     public void insertAllMoviesInDB(List<Movie> movies) {

@@ -53,6 +53,9 @@ public class MovieListActivity extends AppCompatActivity implements RecyclerView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_movies);
 
+        int ID = getIntent().getExtras().getInt("listID");
+        System.out.println(ID);
+
 
         //Creating a SharedPreferences object and getting the previous language...
         SharedPreferences sharedPreferences = this.getSharedPreferences(
@@ -61,48 +64,51 @@ public class MovieListActivity extends AppCompatActivity implements RecyclerView
 
         //Getting list of movies...
         this.repo = new MovieRepository(getApplicationContext());
-        this.movies = (ArrayList<Movie>) this.repo.GetSynchronisedMovies(langCode);
-        ArrayList<Movie> finalMovies = new ArrayList<>(movies);
+        try {
+            this.movies = (ArrayList<Movie>) this.repo.GetMovieListFromAPI(ID,langCode);
+            ArrayList<Movie> finalMovies = new ArrayList<>(movies);
 
 
-        //Retrieving language from previous session...
-        Log.d(LOG_TAG, langCode);
-        LanguageManager languageManager = new LanguageManager(this);
-        languageManager.updateResource(String.valueOf(langCode));
+            //Retrieving language from previous session...
+            Log.d(LOG_TAG, langCode);
+            LanguageManager languageManager = new LanguageManager(this);
+            languageManager.updateResource(String.valueOf(langCode));
 
-        //Storing list of movies inside recyclerview...
-        this.recyclerView = findViewById(R.id.movies_recyclerview);
-        this.recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+            //Storing list of movies inside recyclerview...
+            this.recyclerView = findViewById(R.id.movies_recyclerview);
+            this.recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        this.adapter = new MovieCustomListAdapter(this, movies, this);
-        this.recyclerView.setAdapter(this.adapter);
+            this.adapter = new MovieCustomListAdapter(this, movies, this);
+            this.recyclerView.setAdapter(this.adapter);
 
-        Toast toast = Toast.makeText(this, this.movies.size() + " movies loaded.", Toast.LENGTH_SHORT);
-        toast.show();
+            Toast toast = Toast.makeText(this, this.movies.size() + " movies loaded.", Toast.LENGTH_SHORT);
+            toast.show();
 
-        Log.d(LOG_TAG, "List of movies opened!");
-        //Listen to changes in the edittext field
-        EditText editText = findViewById(R.id.search_movies);
-        editText.addTextChangedListener(new TextWatcher() {
+            Log.d(LOG_TAG, "List of movies opened!");
+            //Listen to changes in the edittext field
+            EditText editText = findViewById(R.id.search_movies);
+            editText.addTextChangedListener(new TextWatcher() {
 
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
+                }
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
+                }
 
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void afterTextChanged(Editable s) {
-                adapter = new MovieCustomListAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().searchFilter(movies, s.toString()), MovieListActivity.this);
-                recyclerView.setAdapter(adapter);
-            }
-        });
-
+                @RequiresApi(api = Build.VERSION_CODES.N)
+                @Override
+                public void afterTextChanged(Editable s) {
+                    adapter = new MovieCustomListAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().searchFilter(movies, s.toString()), MovieListActivity.this);
+                    recyclerView.setAdapter(adapter);
+                }
+            });
+        } catch (NullPointerException e) {
+            System.out.println("Leeg!");
+        }
     }
 
 

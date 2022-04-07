@@ -43,6 +43,9 @@ public interface APICalls  {
     @GET("account/{account_id}/lists")
     Call<MovieListPage> getAccountLists(@Path("account_id") int account_id, @Query("api_key") String api_key, @Query("session_id") String session_id);
 
+    @GET("list/{list_id}")
+    Call<MovieList> getMovieListDetails(@Path("list_id") int list_id, @Query("api_key") String api_key, @Query("language") String language);
+
     @POST("list/{list_id}/add_item")
     Call<MoviePostToListPostResponse> postToList(@Path("list_id") int list_id, @Query("api_key") String api_key, @Query("session_id") String session_id, @Body MediaID mediaID);
 

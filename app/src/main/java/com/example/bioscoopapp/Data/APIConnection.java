@@ -1,6 +1,7 @@
 package com.example.bioscoopapp.Data;
 
 
+import android.os.Build;
 import android.util.Log;
 
 import java.io.IOException;
@@ -266,5 +267,33 @@ public class APIConnection  {
                 System.out.println(t.toString());
             }
         });
+    }
+
+    public MovieList getMovieListDetails(int list_id, String langCode) {
+        CountDownLatch latch = new CountDownLatch(1);
+        final MovieList[] movieList = new MovieList[1];
+        // array that contains the movieList and countdown latch used to wait for the thread to finish
+        new Thread(() -> {
+            try {
+                Call<MovieList> callSync = apiCalls.getMovieListDetails(list_id, apiKey.getAPI_KEY(), langCode);
+                Response<MovieList> response = callSync.execute();
+                movieList[0] = response.body();
+                latch.countDown();
+
+            } catch (IOException e) {
+                System.out.println(e.toString());
+                Log.d(TAG, e.toString());
+            }
+        }).start();
+        // api fetch gets executed in new thread
+        try {
+            latch.await();
+            return movieList[0];
+            // returns object after countdown has been called
+        } catch (InterruptedException e) {
+            Log.d(TAG, e.toString());
+            return null;
+        }
+
     }
 }
