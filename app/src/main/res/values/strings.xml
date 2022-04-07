@@ -40,5 +40,9 @@
     </string-array>
     <string name="language_summary" translatable="false">Language, Taal, Sprache, Langue, Idioma, Язык.</string>
     <string name="remove_list">Remove list</string>
+    <string name="add_list_field_description">Description</string>
+    <string name="add_list_field_create">Create</string>
+    <string name="add_list_field_list_name">List name</string>
+    <string name="add_list_field_create_a_list">Create a list</string>
 
 </resources>

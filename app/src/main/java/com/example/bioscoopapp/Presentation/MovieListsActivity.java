@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -24,8 +25,10 @@ import com.example.bioscoopapp.Logic.LanguageManager;
 import com.example.bioscoopapp.Logic.MovieListRepository;
 import com.example.bioscoopapp.Logic.MovieRepository;
 import com.example.bioscoopapp.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class MovieListsActivity extends AppCompatActivity implements RecyclerViewInterface {
@@ -40,8 +43,6 @@ public class MovieListsActivity extends AppCompatActivity implements RecyclerVie
     private int count = 0;
 
 
-
-
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class MovieListsActivity extends AppCompatActivity implements RecyclerVie
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_of_movielists);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
 
         //Creating a SharedPreferences object and getting the previous language...
@@ -58,8 +60,8 @@ public class MovieListsActivity extends AppCompatActivity implements RecyclerVie
 
         //Getting list of movies...
         this.repo = new MovieListRepository(getApplicationContext());
-        Account account = new APIConnection().getAccount();
-        this.MovieLists = (ArrayList<MovieList>) this.repo.getMovieListFromAccount(account.getId());
+        this.MovieLists = (ArrayList<MovieList>) this.repo.getMovieListFromAccount(
+                new APIConnection().getAccount().getId());
 
 
         //Retrieving language from previous session...
@@ -74,12 +76,13 @@ public class MovieListsActivity extends AppCompatActivity implements RecyclerVie
         this.adapter = new MovieListAdapter(this, MovieLists, this);
         this.recyclerView.setAdapter(this.adapter);
 
-        Toast toast = Toast.makeText(this, this.MovieLists.size() + " movies loaded.", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(this, this.MovieLists.size() + " list(s) found.", Toast.LENGTH_SHORT);
         toast.show();
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add_list_button);
+        fab.setOnClickListener(view -> startActivity(new Intent(this,AddMovieListActivity.class)));
+
     }
-
-
 
 
     @Override

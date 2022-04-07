@@ -17,8 +17,8 @@
         android:clickable="true"
         android:contentDescription="@string/app_name"
         android:src="@drawable/ic_add_list_item"
-        tools:srcCompat="@drawable/ic_add_list_item"
-        android:focusable="true" />
+        app:rippleColor="#FFFFFF"
+        tools:srcCompat="@drawable/ic_add_list_item" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movies_recyclerview"

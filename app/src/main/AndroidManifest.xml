@@ -29,12 +29,23 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.bioscoopapp.Presentation.MainActivity" />
         </activity>
+
         <activity
             android:name=".Presentation.PreferencesActivity"
             android:label="Settings"
             android:exported="false" />
 
-        <activity android:name=".Presentation.MovieListActivity"/>
-        <activity android:name=".Presentation.MovieListsActivity"/>
+        <activity
+            android:name=".Presentation.MovieListActivity"
+            android:label="Movie list details"
+            android:parentActivityName=".Presentation.MovieListActivity"/>
+
+        <activity android:name=".Presentation.MovieListsActivity"
+            android:label="Movie lists"
+            android:parentActivityName=".Presentation.MainActivity"/>
+
+        <activity android:name=".Presentation.AddMovieListActivity"
+            android:label="Add list"
+            android:parentActivityName=".Presentation.MovieListActivity"/>
     </application>
 </manifest>
