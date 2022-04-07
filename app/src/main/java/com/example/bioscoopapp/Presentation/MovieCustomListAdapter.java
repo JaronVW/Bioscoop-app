@@ -99,6 +99,7 @@ public class MovieCustomListAdapter extends
                         removeAt(position);
 
                     });
+
         }
 
     }

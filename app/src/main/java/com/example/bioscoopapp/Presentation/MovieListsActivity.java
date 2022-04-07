@@ -27,6 +27,7 @@ import com.example.bioscoopapp.Logic.MovieRepository;
 import com.example.bioscoopapp.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.net.IDN;
 import java.util.ArrayList;
 import java.util.Objects;
 

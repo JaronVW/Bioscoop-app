@@ -5,12 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bioscoopapp.Data.RecyclerViewInterface;
+import com.example.bioscoopapp.Domain.MediaID;
 import com.example.bioscoopapp.Domain.MovieList;
+import com.example.bioscoopapp.Logic.MovieListRepository;
 import com.example.bioscoopapp.R;
 import com.squareup.picasso.Picasso;
 
@@ -51,6 +54,14 @@ public class MovieListAdapter extends
         return movieLists.size();
     }
 
+    private void removeAt(int position) {
+        movieLists.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, movieLists.size());
+        Toast toast = Toast.makeText(context,"list successfully deleted", Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
     public class MovieListViewHolder extends RecyclerView.ViewHolder {
         public TextView listTitle;
 
@@ -67,6 +78,16 @@ public class MovieListAdapter extends
                     }
                 }
             });
+
+            itemView.findViewById(R.id.remove_list_button)
+                    .setOnClickListener(view -> {
+                        int position = getBindingAdapterPosition();
+                        int id = movieLists.get(getBindingAdapterPosition()).getId();
+                        System.out.println(id);
+                        new MovieListRepository(context.getApplicationContext())
+                                .deleteMovieList(id);
+                       //  removeAt(position);
+                    });
         }
 
     }

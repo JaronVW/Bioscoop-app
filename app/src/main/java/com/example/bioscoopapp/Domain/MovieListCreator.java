@@ -43,4 +43,9 @@ public class MovieListCreator {
         this.description = description;
         this.language = language;
     }
+
+    public MovieListCreator(String name, String language) {
+        this.name = name;
+        this.language = language;
+    }
 }

@@ -85,6 +85,10 @@ public class MovieListRepository {
         apiConnection.deleteMovieFromList(list_id,mediaID);
     }
 
+    public void deleteMovieList(int list_id){
+        apiConnection.deleteMovieList(list_id);
+    }
+
 
 
 }

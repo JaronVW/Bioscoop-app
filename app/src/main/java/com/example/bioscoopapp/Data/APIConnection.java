@@ -296,4 +296,20 @@ public class APIConnection  {
         }
 
     }
+
+    public void deleteMovieList(int list_id) {
+        Call<MoviePostToListPostResponse> call = apiCalls.deleteList(list_id,apiKey.getAPI_KEY(),apiKey.getSession_ID());
+        call.enqueue(new Callback<MoviePostToListPostResponse>() {
+            @Override
+            public void onResponse(Call<MoviePostToListPostResponse> call, Response<MoviePostToListPostResponse> response) {
+                if (response.body() != null) {
+                    System.out.println(response.body().getStatusMessage());
+                }
+            }
+            @Override
+            public void onFailure(Call<MoviePostToListPostResponse> call, Throwable t) {
+                Log.d(TAG,t.toString());
+            }
+        });
+    }
 }

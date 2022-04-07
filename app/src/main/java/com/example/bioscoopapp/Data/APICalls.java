@@ -49,6 +49,9 @@ public interface APICalls  {
     @POST("list/{list_id}/add_item")
     Call<MoviePostToListPostResponse> postToList(@Path("list_id") int list_id, @Query("api_key") String api_key, @Query("session_id") String session_id, @Body MediaID mediaID);
 
+    @DELETE("/list/{list_id}")
+    Call<MoviePostToListPostResponse> deleteList(@Path("list_id") int list_id, @Query("api_key") String api_key, @Query("session_id") String session_id);
+
     @POST("list/{list_id}/remove_item")
     Call<MoviePostToListPostResponse> DeleteFromList(@Path("list_id") int list_id, @Query("api_key") String api_key, @Query("session_id") String session_id, @Body MediaID mediaID);
 
