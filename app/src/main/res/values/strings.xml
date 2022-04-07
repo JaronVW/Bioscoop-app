@@ -44,5 +44,6 @@
     <string name="add_list_field_create">Create</string>
     <string name="add_list_field_list_name">List name</string>
     <string name="add_list_field_create_a_list">Create a list</string>
+    <string name="add_movie_to_list_button_text">Add to list</string>
 
 </resources>

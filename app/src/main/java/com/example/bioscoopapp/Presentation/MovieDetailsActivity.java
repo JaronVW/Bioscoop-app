@@ -10,9 +10,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Domain.MovieDetail;
 import com.example.bioscoopapp.Domain.Video;
 import com.example.bioscoopapp.Domain.VideoResult;
@@ -47,7 +49,8 @@ public class MovieDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie_details);
 
         //Getting the ID from the intent...
-        int ID = getIntent().getExtras().getInt("MovieID");
+        Movie selectedMovie = getIntent().getExtras().getParcelable("selectedMovie");
+        int ID = selectedMovie.getMovieID();
 
         //Creating a SharedPreferences object and getting the previous language...
         SharedPreferences sharedPreferences = this.getSharedPreferences(
@@ -134,6 +137,14 @@ public class MovieDetailsActivity extends AppCompatActivity {
 
         TextView voteAverage = findViewById(R.id.movie_details_voteAverage);
         voteAverage.setText(String.valueOf(this.movie.getVoteAverage()));
+
+        Button addToList = findViewById(R.id.add_movie_to_list_button);
+        addToList.setOnClickListener(view -> {
+            Intent intent = new Intent(this, AddMovieToListActivity.class);
+            intent.putExtra("selectedMovie", selectedMovie);
+            startActivity(intent);
+
+        });
 
     }
 
