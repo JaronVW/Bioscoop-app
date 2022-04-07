@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     public void onItemClick(int position) {
         Log.d(LOG_TAG, "Movie clicked!");
         Intent intent = new Intent(this, MovieDetailsActivity.class);
-        intent.putExtra("MovieID", this.movies.get(position).getMovieID());
+        intent.putExtra("selectedMovie", this.movies.get(position));
         startActivity(intent);
     }
 
@@ -201,11 +201,11 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         Intent intent;
         switch (item.getItemId()) {
             case R.id.settings:
-                 intent = new Intent(this, PreferencesActivity.class);
+                intent = new Intent(this, PreferencesActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.movieLists:
-                 intent = new Intent(this, MovieListsActivity.class);
+                intent = new Intent(this, MovieListsActivity.class);
                 startActivity(intent);
                 return true;
 
