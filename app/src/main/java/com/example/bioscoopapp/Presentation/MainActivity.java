@@ -175,6 +175,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         clearSortingOptionsButton.setOnClickListener(view -> {
             adapter = new MovieAdapter(getApplicationContext(), finalMovies, MainActivity.this);
             recyclerView.setAdapter(adapter);
+
         });
 
 
