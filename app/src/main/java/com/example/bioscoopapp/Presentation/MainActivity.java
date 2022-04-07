@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                     recyclerView.setAdapter(adapter);
                     iscAsc = false;
                 }else {
-                    adapter = new MovieAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByDateDESC(movies), MainActivity.this);
+                    adapter = new MovieAdapter(getApplicationContext(), new MovieManager().sortMoviesByDateDESC(movies), MainActivity.this);
                     recyclerView.setAdapter(adapter);
                     iscAsc = true;
                 }
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                         recyclerView.setAdapter(adapter);
                         iscAsc = false;
                     }else {
-                        adapter = new MovieAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByRatingDESC(movies), MainActivity.this);
+                        adapter = new MovieAdapter(getApplicationContext(), new MovieManager().sortMoviesByRatingDESC(movies), MainActivity.this);
                         recyclerView.setAdapter(adapter);
                         iscAsc = true;
                     }
@@ -174,7 +174,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         });
 
         clearSortingOptionsButton.setOnClickListener(view -> {
-                recyclerView.setAdapter(adapter);
+            adapter = new MovieAdapter(getApplicationContext(), finalMovies, MainActivity.this);
+            recyclerView.setAdapter(adapter);
         });
 
         MovieListRepository movieListRepository = new MovieListRepository(getApplicationContext());
