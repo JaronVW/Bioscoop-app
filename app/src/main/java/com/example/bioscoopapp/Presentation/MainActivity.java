@@ -173,6 +173,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         });
 
         clearSortingOptionsButton.setOnClickListener(view -> {
+            adapter = new MovieAdapter(getApplicationContext(), finalMovies, MainActivity.this);
             recyclerView.setAdapter(adapter);
         });
 
@@ -197,11 +198,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-//        if (item.getItemId() == R.id.settings) {
-//            Intent intent = new Intent(this, PreferencesActivity.class);
-//            startActivity(intent);
-//            return true;
-//        }
         Intent intent;
         switch (item.getItemId()) {
             case R.id.settings:

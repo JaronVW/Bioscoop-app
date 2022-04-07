@@ -1,5 +1,6 @@
 package com.example.bioscoopapp.Presentation;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,10 +22,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bioscoopapp.Data.RecyclerViewInterface;
-import com.example.bioscoopapp.Domain.MediaID;
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Logic.LanguageManager;
-import com.example.bioscoopapp.Logic.MovieListRepository;
 import com.example.bioscoopapp.Logic.MovieManager;
 import com.example.bioscoopapp.Logic.MovieRepository;
 import com.example.bioscoopapp.R;
@@ -33,7 +32,7 @@ import java.util.ArrayList;
 
 public class MovieListActivity extends AppCompatActivity implements RecyclerViewInterface {
     private static final String LOG_TAG =
-            MainActivity.class.getSimpleName() + " DEBUG";
+            MovieListActivity.class.getSimpleName() + " DEBUG";
 
     private RecyclerView recyclerView;
     private MovieCustomListAdapter adapter;
@@ -78,7 +77,7 @@ public class MovieListActivity extends AppCompatActivity implements RecyclerView
             this.recyclerView = findViewById(R.id.movies_recyclerview);
             this.recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-            this.adapter = new MovieCustomListAdapter(this, movies, this);
+            this.adapter = new MovieCustomListAdapter(this, movies, this,ID);
             this.recyclerView.setAdapter(this.adapter);
 
             Toast toast = Toast.makeText(this, this.movies.size() + " movies loaded.", Toast.LENGTH_SHORT);
@@ -102,10 +101,80 @@ public class MovieListActivity extends AppCompatActivity implements RecyclerView
                 @RequiresApi(api = Build.VERSION_CODES.N)
                 @Override
                 public void afterTextChanged(Editable s) {
-                    adapter = new MovieCustomListAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().searchFilter(movies, s.toString()), MovieListActivity.this);
+                    adapter = new MovieCustomListAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().searchFilter(movies, s.toString()), MovieListActivity.this,ID);
                     recyclerView.setAdapter(adapter);
                 }
             });
+
+            Button dateSortButton = findViewById(R.id.sortDate);
+            Button titleSortButton = findViewById(R.id.sortTitle);
+            Button ratingSortButton = findViewById(R.id.sortRating);
+            Button clearSortingOptionsButton = findViewById(R.id.clearSortingOptionsButton);
+
+            dateSortButton.setOnClickListener(new View.OnClickListener() {
+                private boolean iscAsc;
+
+                @RequiresApi(api = Build.VERSION_CODES.N)
+                @Override
+                public void onClick(View view) {
+
+                    if (iscAsc) {
+                        adapter = new MovieCustomListAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByDateASC(movies), MovieListActivity.this,ID);
+                        recyclerView.setAdapter(adapter);
+                        iscAsc = false;
+                    } else {
+                        adapter = new MovieCustomListAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByDateDESC(movies), MovieListActivity.this,ID);
+                        recyclerView.setAdapter(adapter);
+                        iscAsc = true;
+                    }
+                }
+            });
+
+            titleSortButton.setOnClickListener(new View.OnClickListener() {
+                private boolean iscAsc;
+
+
+                @RequiresApi(api = Build.VERSION_CODES.N)
+                @Override
+                public void onClick(View view) {
+
+                    if (iscAsc) {
+                        adapter = new MovieCustomListAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByTitleASC(movies), MovieListActivity.this,ID);
+                        recyclerView.setAdapter(adapter);
+                        iscAsc = false;
+                    } else {
+                        adapter = new MovieCustomListAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByTitleDESC(movies), MovieListActivity.this,ID);
+                        recyclerView.setAdapter(adapter);
+                        iscAsc = true;
+                    }
+                }
+            });
+
+            ratingSortButton.setOnClickListener(new View.OnClickListener() {
+                private boolean iscAsc;
+
+
+                @RequiresApi(api = Build.VERSION_CODES.N)
+                @Override
+                public void onClick(View view) {
+
+                    if (iscAsc) {
+                        adapter = new MovieCustomListAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByRatingASC(movies), MovieListActivity.this,ID);
+                        recyclerView.setAdapter(adapter);
+                        iscAsc = false;
+                    } else {
+                        adapter = new MovieCustomListAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByRatingDESC(movies), MovieListActivity.this,ID);
+                        recyclerView.setAdapter(adapter);
+                        iscAsc = true;
+                    }
+                }
+            });
+
+            clearSortingOptionsButton.setOnClickListener(view -> {
+                adapter = new MovieCustomListAdapter(getApplicationContext(), finalMovies, MovieListActivity.this,ID);
+                recyclerView.setAdapter(adapter);
+            });
+
         } catch (NullPointerException e) {
             System.out.println("Leeg!");
         }
@@ -126,12 +195,20 @@ public class MovieListActivity extends AppCompatActivity implements RecyclerView
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.settings) {
-            Intent intent = new Intent(this, PreferencesActivity.class);
-            startActivity(intent);
-            return true;
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.settings:
+                intent = new Intent(this, PreferencesActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.movieLists:
+                intent = new Intent(this, MovieListsActivity.class);
+                startActivity(intent);
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
