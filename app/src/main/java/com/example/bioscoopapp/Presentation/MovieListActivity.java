@@ -186,7 +186,7 @@ public class MovieListActivity extends AppCompatActivity implements RecyclerView
     public void onItemClick(int position) {
         Log.d(LOG_TAG, "Movie clicked!");
         Intent intent = new Intent(this, MovieDetailsActivity.class);
-        intent.putExtra("MovieID", this.movies.get(position).getMovieID());
+        intent.putExtra("selectedMovie", this.movies.get(position));
         startActivity(intent);
     }
 
