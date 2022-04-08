@@ -17,11 +17,9 @@
     <string name="dark_mode_summary">Turn on dark mode for more comfortable reading at night.</string>
     <string name="app_appearance_text">App appearance</string>
     <string name="text_appearance_text">Text appearance</string>
-    <string name="an_icon_of_a_filter">An icon of a filter.</string>
     <string name="search_movies">Search…</string>
     <string name="hours_and_text">hours and</string>
     <string name="minutes_text">minutes</string>
-
     <string-array name="languages_array">
         <item>English</item>
         <item>Nederlands</item>
@@ -39,17 +37,17 @@
         <item>ru</item>
     </string-array>
     <string name="language_summary" translatable="false">Language, Taal, Sprache, Langue, Idioma, Язык.</string>
-    <string name="remove_list" translatable="false">Remove list</string>
-    <string name="add_list_field_description" translatable="false">Description(Optional)</string>
-    <string name="add_list_field_create" translatable="false">Create</string>
-    <string name="add_list_field_list_name" translatable="false">List name</string>
-    <string name="add_list_field_create_a_list" translatable="false">Create a list</string>
-    <string name="add_movie_to_list_button_text" translatable="false">Add to list</string>
-    <string name="rating_text" translatable="false">Rating</string>
-    <string name="date_text" translatable="false">Date</string>
-    <string name="title_text" translatable="false">title</string>
-    <string name="clear_text" translatable="false">Clear</string>
-    <string name="sort_by_text" translatable="false">Sort by:</string>
-    <string name="search_text" translatable="false">Search</string>
+    <string name="remove_list">Remove list</string>
+    <string name="add_list_field_description">Description(Optional)</string>
+    <string name="add_list_field_create">Create</string>
+    <string name="add_list_field_list_name">List name</string>
+    <string name="add_list_field_create_a_list">Create a list</string>
+    <string name="add_movie_to_list_button_text">Add to list</string>
+    <string name="rating_text">Rating</string>
+    <string name="date_text">Date</string>
+    <string name="title_text">Title</string>
+    <string name="clear_text">Clear</string>
+    <string name="sort_by_text">Sort by:</string>
+    <string name="search_text">Search</string>
 
 </resources>

@@ -18,8 +18,19 @@
     <string name="dark_mode_summary">Schalten Sie den Dunkelmodus ein, um nachts bequemer lesen zu können.</string>
     <string name="app_appearance_text">App-Erscheinungsbild</string>
     <string name="text_appearance_text">Textdarstellung</string>
-    <string name="an_icon_of_a_filter" translatable="false">Ein Symbol eines Filters.</string>
     <string name="search_movies">Suche…</string>
     <string name="hours_and_text">stunden und</string>
     <string name="minutes_text">minuten</string>
+    <string name="add_list_field_description">Beschreibung(optional)</string>
+    <string name="remove_list">Liste entfernen</string>
+    <string name="add_list_field_create">Erstellen</string>
+    <string name="add_list_field_list_name">Listennamen</string>
+    <string name="add_list_field_create_a_list">Erstelle eine Liste</string>
+    <string name="add_movie_to_list_button_text">Zur Liste hinzufügen</string>
+    <string name="rating_text">Bewertung</string>
+    <string name="date_text">Datum</string>
+    <string name="title_text">Titel</string>
+    <string name="clear_text">Klar</string>
+    <string name="sort_by_text">Sortieren nach:</string>
+    <string name="search_text">Suche</string>
 </resources>

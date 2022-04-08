@@ -18,8 +18,19 @@
     <string name="dark_mode_summary">Activez le mode sombre pour une lecture plus confortable la nuit.</string>
     <string name="app_appearance_text">Apparence de l\'application</string>
     <string name="text_appearance_text">Apparence du texte</string>
-    <string name="an_icon_of_a_filter" translatable="false">Une icône d\'un filtre.</string>
     <string name="search_movies">Chercher…</string>
     <string name="hours_and_text">heures et</string>
     <string name="minutes_text">minutes</string>
+    <string name="remove_list">Supprimer la liste</string>
+    <string name="add_list_field_description">Description(facultatif)</string>
+    <string name="add_list_field_create">Créer</string>
+    <string name="add_list_field_list_name">Liste de noms</string>
+    <string name="add_list_field_create_a_list">Créer une liste</string>
+    <string name="add_movie_to_list_button_text">Ajouter à la liste</string>
+    <string name="rating_text">Évaluation</string>
+    <string name="date_text">Date</string>
+    <string name="title_text">Titre</string>
+    <string name="clear_text">Dégager</string>
+    <string name="sort_by_text">Trier par:</string>
+    <string name="search_text">Recherche</string>
 </resources>

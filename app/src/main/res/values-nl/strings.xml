@@ -18,8 +18,19 @@
     <string name="dark_mode_summary">Schakel de donkere modus in voor comfortabeler lezen \'s nachts.</string>
     <string name="app_appearance_text">Uiterlijk app</string>
     <string name="text_appearance_text">Uiterlijk tekst</string>
-    <string name="an_icon_of_a_filter" translatable="false">Een icoon van een filter.</string>
     <string name="search_movies">Zoeken…</string>
     <string name="hours_and_text">uur en</string>
     <string name="minutes_text">minuten</string>
+    <string name="remove_list">Lijst verwijderen</string>
+    <string name="add_list_field_description">Beschrijving(Optioneel)</string>
+    <string name="add_list_field_create">Creëren</string>
+    <string name="add_list_field_list_name">Lijst naam</string>
+    <string name="add_list_field_create_a_list">Lijst Creëren</string>
+    <string name="add_movie_to_list_button_text">Toevoegen aan lijst</string>
+    <string name="rating_text">Beoordeling</string>
+    <string name="date_text">Datum</string>
+    <string name="title_text">Titel</string>
+    <string name="clear_text">Doorzichtig</string>
+    <string name="sort_by_text">Sorteren met:</string>
+    <string name="search_text">Zoeken</string>
 </resources>

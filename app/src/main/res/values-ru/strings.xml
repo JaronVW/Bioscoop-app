@@ -18,8 +18,19 @@
     <string name="dark_mode_summary">Включите темный режим для более комфортного чтения ночью.</string>
     <string name="app_appearance_text">Внешний вид приложения</string>
     <string name="text_appearance_text">Оригинальный текст</string>
-    <string name="an_icon_of_a_filter" translatable="false">Значок фильтра.</string>
     <string name="search_movies">Поиск</string>
     <string name="hours_and_text">часы и</string>
     <string name="minutes_text">минуты</string>
+    <string name="remove_list">Удалить список</string>
+    <string name="add_list_field_description">Описание(необязательно)</string>
+    <string name="add_list_field_create">Создавать</string>
+    <string name="add_list_field_list_name">Имя списка</string>
+    <string name="add_list_field_create_a_list">Создать список</string>
+    <string name="add_movie_to_list_button_text">Добавить в список</string>
+    <string name="rating_text">Рейтинг</string>
+    <string name="date_text">Дата</string>
+    <string name="title_text">Заголовок</string>
+    <string name="clear_text">Прозрачный</string>
+    <string name="sort_by_text">Сортировать по:</string>
+    <string name="search_text">Поиск</string>
 </resources>

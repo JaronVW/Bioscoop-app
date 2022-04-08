@@ -18,8 +18,19 @@
     <string name="dark_mode_summary">Activa el modo oscuro para una lectura más cómoda por la noche.</string>
     <string name="app_appearance_text">apariencia de la aplicación</string>
     <string name="text_appearance_text">Texto de Uiterlijk</string>
-    <string name="an_icon_of_a_filter" translatable="false">Un icono de un filtro.</string>
     <string name="search_movies" tools:ignore="TypographyEllipsis">Búsqueda...</string>
     <string name="hours_and_text">horas y</string>
     <string name="minutes_text">minutos</string>
+    <string name="remove_list">Quitar lista</string>
+    <string name="add_list_field_description">Descripción(opcional)</string>
+    <string name="add_list_field_create">Crear</string>
+    <string name="add_list_field_list_name">Lista de nombres</string>
+    <string name="add_list_field_create_a_list">Crear una lista</string>
+    <string name="add_movie_to_list_button_text">Agregar a la lista</string>
+    <string name="rating_text">Clasificación</string>
+    <string name="date_text">Fecha</string>
+    <string name="title_text">Título</string>
+    <string name="clear_text">Claro</string>
+    <string name="sort_by_text">Ordenar por:</string>
+    <string name="search_text">Búsqueda</string>
 </resources>
