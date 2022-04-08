@@ -11,6 +11,7 @@ import com.example.bioscoopapp.Data.DatabaseClient;
 import com.example.bioscoopapp.Data.MovieDAO;
 import com.example.bioscoopapp.Domain.Movie;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -20,15 +21,21 @@ public class MovieRepository {
     private final APIConnection apiConnection;
     private final MovieDAO movieDAO;
     private final Context context;
+    ConnectivityManager connectivityManager;
+    NetworkInfo netWorkInfo;
 
     public MovieRepository(Context context) {
         this.context = context;
         this.apiConnection = new APIConnection();
         movieDAO = DatabaseClient.getInstance(this.context).getAppDatabase().movieDAO();
+        connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        netWorkInfo= connectivityManager.getActiveNetworkInfo();
     }
 
     public List<Movie> GetPopularMoviesFromAPI(String langCode) {
-        return apiConnection.getPopularMovies(langCode);
+        if (netWorkInfo == null)
+            return apiConnection.getPopularMovies(langCode);
+        return null;
     }
 
     public List<Movie> GetPopularMoviesFromDB() {
@@ -42,10 +49,17 @@ public class MovieRepository {
             latch.await();
             return list;
         } catch (InterruptedException e) {
+
             e.printStackTrace();
             return null;
         }
 
+    }
+
+    public List<Movie> GetMovieListFromAPI(int list_id,String langcode) {
+        if (netWorkInfo != null)
+            return apiConnection.getMovieListDetails(list_id,langcode).getItems();
+        return null;
     }
 
     public void insertAllMoviesInDB(List<Movie> movies) {

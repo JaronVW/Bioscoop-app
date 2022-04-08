@@ -274,6 +274,20 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
+        <Button
+            android:id="@+id/add_movie_to_list_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/add_movie_to_list_button_text"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toTopOf="@+id/movie_details_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/movie_details_tagline"
+            app:layout_constraintVertical_bias="0.0" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

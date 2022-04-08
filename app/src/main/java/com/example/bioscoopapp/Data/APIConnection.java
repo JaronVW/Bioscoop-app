@@ -1,23 +1,24 @@
 package com.example.bioscoopapp.Data;
 
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.os.Build;
 import android.util.Log;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
-import com.example.bioscoopapp.Domain.Genre;
+import com.example.bioscoopapp.Domain.Account;
+import com.example.bioscoopapp.Domain.MediaID;
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Domain.MovieDetail;
+import com.example.bioscoopapp.Domain.MovieList;
+import com.example.bioscoopapp.Domain.MovieListCreator;
+import com.example.bioscoopapp.Domain.MovieListPage;
+import com.example.bioscoopapp.Domain.MovieListResponse;
+import com.example.bioscoopapp.Domain.MoviePostToListPostResponse;
 import com.example.bioscoopapp.Domain.Page;
-import com.example.bioscoopapp.Domain.RequestToken;
-import com.example.bioscoopapp.Domain.SessionToken;
-import com.example.bioscoopapp.Domain.Video;
 import com.example.bioscoopapp.Domain.VideoResult;
 import com.example.bioscoopapp.Presentation.MainActivity;
 
@@ -28,7 +29,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class APIConnection {
+public class APIConnection  {
 
     private static final String LOG_TAG =
             MainActivity.class.getSimpleName() + " DEBUG";
@@ -46,7 +47,7 @@ public class APIConnection {
 
     }
 
-    public List<Movie> getPopularMovies(String langCode) {
+    public java.util.List getPopularMovies(String langCode) {
         CountDownLatch latch = new CountDownLatch(1);
         ArrayList<Movie> movieList = new ArrayList<>();
         // list that contains the movies and countdown latch used to wait for the thread to finish
@@ -102,38 +103,10 @@ public class APIConnection {
         }
 
     }
-    public List<Genre> getGenres() {
+
+    public java.util.List getMovieVideos(String movieID) {
         CountDownLatch latch = new CountDownLatch(1);
-        ArrayList<Genre> genreList = new ArrayList<>();
-        // list that contains the movies and countdown latch used to wait for the thread to finish
-        new Thread(() -> {
-            try {
-                Call<List<Genre>> callSync = apiCalls.getGenres(apiKey.getAPI_KEY());
-                Response<List<Genre>> response = callSync.execute();
-
-                if (response.body() != null) {
-                    genreList.addAll(response.body());
-                }
-                latch.countDown();
-            } catch (IOException e) {
-                Log.d(TAG, e.toString());
-            }
-        }).start();
-        // api fetch gets executed in new thread
-        try {
-            latch.await();
-            return genreList;
-            // returns list after countdown has been called
-        } catch (InterruptedException e) {
-            Log.d(TAG, e.toString());
-            return null;
-        }
-
-    }
-
-    public List<Video> getMovieVideos(String movieID) {
-        CountDownLatch latch = new CountDownLatch(1);
-        List<Video> videoList = new ArrayList<>();
+        java.util.List videoList = new ArrayList<>();
         // array that contains the videos and countdown latch used to wait for the thread to finish
         new Thread(() -> {
             try {
@@ -161,18 +134,181 @@ public class APIConnection {
 
     }
 
-//    public boolean addList(MovieList movieList){
-//        Call<Boolean> call = apiCalls.postMovieList(apiKey.getAPI_KEY(),apiKey.getSession_ID(),movieList).enqueue(new Callback<Boolean>() {
-//            @Override
-//            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Boolean> call, Throwable t) {
-//
-//            }
-//        });
-//    }
 
+
+
+
+
+
+    public MovieList getMovieList(int list_id) {
+        CountDownLatch latch = new CountDownLatch(1);
+        final MovieList[] movieLists = new MovieList[1];
+        // array that contains the movieLists and countdown latch used to wait for the thread to finish
+        new Thread(() -> {
+            try {
+                Call<MovieList> callSync = apiCalls.getMovieList(list_id,apiKey.getAPI_KEY());
+                Response<MovieList> response = callSync.execute();
+                System.out.println(response);
+                movieLists[0] = response.body();
+                latch.countDown();
+
+            } catch (IOException e) {
+                Log.d(TAG, e.toString());
+            }
+        }).start();
+        // api fetch gets executed in new thread
+        try {
+            latch.await();
+            return movieLists[0];
+            // returns object after countdown has been called
+        } catch (InterruptedException e) {
+            Log.d(TAG, e.toString());
+            return null;
+        }
+
+    }
+
+    public Account getAccount(){
+        CountDownLatch latch = new CountDownLatch(1);
+        final Account[] account = new Account[1];
+        // array that contains the movie and countdown latch used to wait for the thread to finish
+        new Thread(() -> {
+            try {
+                Call<Account> callSync = apiCalls.getAccount(apiKey.getAPI_KEY(),apiKey.getSession_ID());
+                Response<Account> response = callSync.execute();
+                account[0] = response.body();
+                latch.countDown();
+
+            } catch (IOException e) {
+                Log.d(TAG, e.toString());
+            }
+        }).start();
+        // api fetch gets executed in new thread
+        try {
+            latch.await();
+            return account[0];
+            // returns object after countdown has been called
+        } catch (InterruptedException e) {
+            Log.d(TAG, e.toString());
+            return null;
+        }
+    }
+
+    public List<MovieList> getAccountLists(int account_id) {
+        CountDownLatch latch = new CountDownLatch(1);
+        List<MovieList> movielists = new ArrayList<>();
+        // list that contains the movies and countdown latch used to wait for the thread to finish
+        new Thread(() -> {
+            try {
+                Call<MovieListPage> callSync = apiCalls.getAccountLists( account_id,apiKey.getAPI_KEY(),apiKey.getSession_ID());
+                Response<MovieListPage> response = callSync.execute();
+
+                if (response.body() != null) {
+                    movielists.addAll(response.body().getResults());
+                }
+                latch.countDown();
+            } catch (IOException e) {
+                Log.d(TAG, e.toString());
+            }
+        }).start();
+        // api fetch gets executed in new thread
+        try {
+            latch.await();
+            return movielists;
+            // returns list after countdown has been called
+        } catch (InterruptedException e) {
+            Log.d(TAG, e.toString());
+            return null;
+        }
+
+    }
+
+
+    public void addMovieToList(int list_id, MediaID mediaID) {
+        Call<MoviePostToListPostResponse> call = apiCalls.postToList(list_id,apiKey.getAPI_KEY(),apiKey.getSession_ID(),mediaID);
+        call.enqueue(new Callback<MoviePostToListPostResponse>() {
+            @Override
+            public void onResponse(Call<MoviePostToListPostResponse> call, Response<MoviePostToListPostResponse> response) {
+                System.out.println(response.body().getStatusMessage());
+            }
+
+            @Override
+            public void onFailure(Call<MoviePostToListPostResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void deleteMovieFromList(int list_id, MediaID mediaID) {
+        Call<MoviePostToListPostResponse> call = apiCalls.DeleteFromList(list_id,apiKey.getAPI_KEY(),apiKey.getSession_ID(),mediaID);
+        call.enqueue(new Callback<MoviePostToListPostResponse>() {
+            @Override
+            public void onResponse(Call<MoviePostToListPostResponse> call, Response<MoviePostToListPostResponse> response) {
+                System.out.println(response.body().getStatusMessage());
+            }
+
+            @Override
+            public void onFailure(Call<MoviePostToListPostResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void addList(MovieListCreator movieList) {
+        Call<MovieListResponse> call = apiCalls.postMovieList(apiKey.getAPI_KEY(),apiKey.getSession_ID(),movieList);
+        call.enqueue(new Callback<MovieListResponse>() {
+            @Override
+            public void onResponse(Call<MovieListResponse> call, Response<MovieListResponse> response) {
+                System.out.println(response.body().getListId());
+            }
+
+            @Override
+            public void onFailure(Call<MovieListResponse> call, Throwable t) {
+                System.out.println(t.toString());
+            }
+        });
+    }
+
+    public MovieList getMovieListDetails(int list_id, String langCode) {
+        CountDownLatch latch = new CountDownLatch(1);
+        final MovieList[] movieList = new MovieList[1];
+        // array that contains the movieList and countdown latch used to wait for the thread to finish
+        new Thread(() -> {
+            try {
+                Call<MovieList> callSync = apiCalls.getMovieListDetails(list_id, apiKey.getAPI_KEY(), langCode);
+                Response<MovieList> response = callSync.execute();
+                movieList[0] = response.body();
+                latch.countDown();
+
+            } catch (IOException e) {
+                System.out.println(e.toString());
+                Log.d(TAG, e.toString());
+            }
+        }).start();
+        // api fetch gets executed in new thread
+        try {
+            latch.await();
+            return movieList[0];
+            // returns object after countdown has been called
+        } catch (InterruptedException e) {
+            Log.d(TAG, e.toString());
+            return null;
+        }
+
+    }
+
+    public void deleteMovieList(int list_id) {
+        Call<MoviePostToListPostResponse> call = apiCalls.deleteList(list_id,apiKey.getAPI_KEY(),apiKey.getSession_ID());
+        call.enqueue(new Callback<MoviePostToListPostResponse>() {
+            @Override
+            public void onResponse(Call<MoviePostToListPostResponse> call, Response<MoviePostToListPostResponse> response) {
+                    System.out.println(response);
+
+            }
+            @Override
+            public void onFailure(Call<MoviePostToListPostResponse> call, Throwable t) {
+                System.out.println(t.toString());
+            }
+        });
+    }
 }
