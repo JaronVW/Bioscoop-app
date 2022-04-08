@@ -83,10 +83,9 @@ public class MovieListAdapter extends
                     .setOnClickListener(view -> {
                         int position = getBindingAdapterPosition();
                         int id = movieLists.get(getBindingAdapterPosition()).getId();
-                        System.out.println(id);
-                        new MovieListRepository(context.getApplicationContext())
-                                .deleteMovieList(id);
-                       //  removeAt(position);
+                        MovieListRepository movieListRepository = new MovieListRepository(context);
+                        movieListRepository.deleteMovieList(id);
+                        removeAt(getBindingAdapterPosition());
                     });
         }
 

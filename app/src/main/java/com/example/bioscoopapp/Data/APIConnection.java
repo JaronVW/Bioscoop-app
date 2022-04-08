@@ -302,13 +302,12 @@ public class APIConnection  {
         call.enqueue(new Callback<MoviePostToListPostResponse>() {
             @Override
             public void onResponse(Call<MoviePostToListPostResponse> call, Response<MoviePostToListPostResponse> response) {
-                if (response.body() != null) {
-                    System.out.println(response.body().getStatusMessage());
-                }
+                    System.out.println(response);
+
             }
             @Override
             public void onFailure(Call<MoviePostToListPostResponse> call, Throwable t) {
-                Log.d(TAG,t.toString());
+                System.out.println(t.toString());
             }
         });
     }
