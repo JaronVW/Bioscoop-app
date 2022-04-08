@@ -1,9 +1,11 @@
 package com.example.bioscoopapp.Logic;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -13,11 +15,15 @@ import com.example.bioscoopapp.Data.MovieListDAO;
 import com.example.bioscoopapp.Domain.MediaID;
 import com.example.bioscoopapp.Domain.MovieList;
 import com.example.bioscoopapp.Domain.MovieListCreator;
+import com.example.bioscoopapp.Presentation.MovieListsActivity;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 public class MovieListRepository {
+
+    private static final String LOG_TAG = "MovieListRepository DEBUG";
+
     private final APIConnection apiConnection;
     private final MovieListDAO movieListDAO;
     private final Context context;
@@ -46,6 +52,7 @@ public class MovieListRepository {
 
 
 
+    @SuppressLint("LongLogTag")
     public boolean addMovieToDB(MovieList movieList) {
         CountDownLatch latch = new CountDownLatch(1);
         new Thread(() -> {
@@ -56,11 +63,12 @@ public class MovieListRepository {
             latch.await();
             return true;
         } catch (InterruptedException e) {
-            System.out.println(e.toString());
+            Log.d(LOG_TAG, e.toString());
             return false;
         }
     }
 
+    @SuppressLint("LongLogTag")
     @RequiresApi(api = Build.VERSION_CODES.N)
     public boolean addMovieToDB(List<MovieList> movieLists) {
         CountDownLatch latch = new CountDownLatch(1);
@@ -72,7 +80,7 @@ public class MovieListRepository {
             latch.await();
             return true;
         } catch (InterruptedException e) {
-            System.out.println(e.toString());
+            Log.d(LOG_TAG, e.toString());
             return false;
         }
     }

@@ -3,6 +3,8 @@ package com.example.bioscoopapp.Data;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.example.bioscoopapp.Domain.Account;
 import com.example.bioscoopapp.Domain.MediaID;
 import com.example.bioscoopapp.Domain.Movie;
@@ -13,6 +15,7 @@ import com.example.bioscoopapp.Domain.MovieListPage;
 import com.example.bioscoopapp.Domain.MovieListResponse;
 import com.example.bioscoopapp.Domain.MoviePostToListPostResponse;
 import com.example.bioscoopapp.Domain.Page;
+import com.example.bioscoopapp.Domain.Video;
 import com.example.bioscoopapp.Domain.VideoResult;
 import com.example.bioscoopapp.Presentation.MainActivity;
 
@@ -46,7 +49,7 @@ public class APIConnection  {
 
     }
 
-    public java.util.List getPopularMovies(String langCode) {
+    public List<Movie> getPopularMovies(String langCode) {
         CountDownLatch latch = new CountDownLatch(1);
         ArrayList<Movie> movieList = new ArrayList<>();
         // list that contains the movies and countdown latch used to wait for the thread to finish
@@ -103,9 +106,9 @@ public class APIConnection  {
 
     }
 
-    public java.util.List getMovieVideos(String movieID) {
+    public List<Video> getMovieVideos(String movieID) {
         CountDownLatch latch = new CountDownLatch(1);
-        java.util.List videoList = new ArrayList<>();
+        List<Video> videoList = new ArrayList<>();
         // array that contains the videos and countdown latch used to wait for the thread to finish
         new Thread(() -> {
             try {
@@ -221,12 +224,13 @@ public class APIConnection  {
         Call<MoviePostToListPostResponse> call = apiCalls.postToList(list_id,apiKey.getAPI_KEY(),apiKey.getSession_ID(),mediaID);
         call.enqueue(new Callback<MoviePostToListPostResponse>() {
             @Override
-            public void onResponse(Call<MoviePostToListPostResponse> call, Response<MoviePostToListPostResponse> response) {
+            public void onResponse(@NonNull Call<MoviePostToListPostResponse> call, @NonNull Response<MoviePostToListPostResponse> response) {
+                assert response.body() != null;
                 System.out.println(response.body().getStatusMessage());
             }
 
             @Override
-            public void onFailure(Call<MoviePostToListPostResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<MoviePostToListPostResponse> call, @NonNull Throwable t) {
 
             }
         });
@@ -236,12 +240,13 @@ public class APIConnection  {
         Call<MoviePostToListPostResponse> call = apiCalls.DeleteFromList(list_id,apiKey.getAPI_KEY(),apiKey.getSession_ID(),mediaID);
         call.enqueue(new Callback<MoviePostToListPostResponse>() {
             @Override
-            public void onResponse(Call<MoviePostToListPostResponse> call, Response<MoviePostToListPostResponse> response) {
+            public void onResponse(@NonNull Call<MoviePostToListPostResponse> call, @NonNull Response<MoviePostToListPostResponse> response) {
+                assert response.body() != null;
                 System.out.println(response.body().getStatusMessage());
             }
 
             @Override
-            public void onFailure(Call<MoviePostToListPostResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<MoviePostToListPostResponse> call, @NonNull Throwable t) {
 
             }
         });
@@ -251,13 +256,14 @@ public class APIConnection  {
         Call<MovieListResponse> call = apiCalls.postMovieList(apiKey.getAPI_KEY(),apiKey.getSession_ID(),movieList);
         call.enqueue(new Callback<MovieListResponse>() {
             @Override
-            public void onResponse(Call<MovieListResponse> call, Response<MovieListResponse> response) {
+            public void onResponse(@NonNull Call<MovieListResponse> call, @NonNull Response<MovieListResponse> response) {
+                assert response.body() != null;
                 System.out.println(response.body().getListId());
             }
 
             @Override
-            public void onFailure(Call<MovieListResponse> call, Throwable t) {
-                System.out.println(t.toString());
+            public void onFailure(@NonNull Call<MovieListResponse> call, @NonNull Throwable t) {
+                Log.d(LOG_TAG, t.toString());
             }
         });
     }
@@ -274,7 +280,6 @@ public class APIConnection  {
                 latch.countDown();
 
             } catch (IOException e) {
-                System.out.println(e.toString());
                 Log.d(TAG, e.toString());
             }
         }).start();
@@ -294,13 +299,13 @@ public class APIConnection  {
         Call<MoviePostToListPostResponse> call = apiCalls.deleteList(list_id,apiKey.getAPI_KEY(),apiKey.getSession_ID());
         call.enqueue(new Callback<MoviePostToListPostResponse>() {
             @Override
-            public void onResponse(Call<MoviePostToListPostResponse> call, Response<MoviePostToListPostResponse> response) {
+            public void onResponse(@NonNull Call<MoviePostToListPostResponse> call, @NonNull Response<MoviePostToListPostResponse> response) {
                     System.out.println(response);
 
             }
             @Override
-            public void onFailure(Call<MoviePostToListPostResponse> call, Throwable t) {
-                System.out.println(t.toString());
+            public void onFailure(@NonNull Call<MoviePostToListPostResponse> call, @NonNull Throwable t) {
+                Log.d(LOG_TAG, t.toString());
             }
         });
     }

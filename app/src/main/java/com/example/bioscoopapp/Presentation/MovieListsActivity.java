@@ -41,7 +41,7 @@ public class MovieListsActivity extends AppCompatActivity implements RecyclerVie
     private MovieListAdapter adapter;
     private ArrayList<MovieList> MovieLists;
     private MovieListRepository repo;
-    private int count = 0;
+    private final int count = 0;
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -80,7 +80,7 @@ public class MovieListsActivity extends AppCompatActivity implements RecyclerVie
         Toast toast = Toast.makeText(this, this.MovieLists.size() + " list(s) found.", Toast.LENGTH_SHORT);
         toast.show();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add_list_button);
+        FloatingActionButton fab = findViewById(R.id.add_list_button);
         fab.setOnClickListener(view -> startActivity(new Intent(this,AddMovieListActivity.class)));
 
     }

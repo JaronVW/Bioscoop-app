@@ -33,12 +33,8 @@ public class AddMovieToListActivity extends AppCompatActivity implements Recycle
     private static final String LOG_TAG =
             MovieListsActivity.class.getSimpleName() + " DEBUG";
 
-    private RecyclerView recyclerView;
-    private MovieListAdapter adapter;
     private ArrayList<MovieList> MovieLists;
     private MovieListRepository repo;
-    private int count = 0;
-    private Movie passedMovie;
     private int ID;
 
 
@@ -51,7 +47,7 @@ public class AddMovieToListActivity extends AppCompatActivity implements Recycle
         setContentView(R.layout.activity_list_of_movielists);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        passedMovie = getIntent().getExtras().getParcelable("selectedMovie");
+        Movie passedMovie = getIntent().getExtras().getParcelable("selectedMovie");
         ID = passedMovie.getMovieID();
 
 
@@ -72,16 +68,16 @@ public class AddMovieToListActivity extends AppCompatActivity implements Recycle
         languageManager.updateResource(String.valueOf(langCode));
 
         //Storing list of movies inside recyclerview...
-        this.recyclerView = findViewById(R.id.movies_recyclerview);
-        this.recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+        RecyclerView recyclerView = findViewById(R.id.movies_recyclerview);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
 
-        this.adapter = new MovieListAdapter(this, MovieLists, this);
-        this.recyclerView.setAdapter(this.adapter);
+        MovieListAdapter adapter = new MovieListAdapter(this, MovieLists, this);
+        recyclerView.setAdapter(adapter);
 
         Toast toast = Toast.makeText(this, this.MovieLists.size() + " list(s) found.", Toast.LENGTH_SHORT);
         toast.show();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add_list_button);
+        FloatingActionButton fab = findViewById(R.id.add_list_button);
         fab.setOnClickListener(view -> startActivity(new Intent(this,AddMovieListActivity.class)));
 
     }

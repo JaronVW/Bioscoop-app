@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     private ArrayList<Movie> movies;
     private ArrayList<Movie> finalMovies;
     private MovieRepository repo;
-    private int count = 0;
+    private final int count = 0;
     private String langCode;
 
 
@@ -170,7 +170,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
         ratingSortButton.setOnClickListener(new View.OnClickListener() {
             private boolean iscAsc;
 
-
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
@@ -224,7 +223,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                 intent = new Intent(this, MovieListsActivity.class);
                 startActivity(intent);
                 return true;
-
         }
         return super.onOptionsItemSelected(item);
     }

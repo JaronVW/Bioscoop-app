@@ -1,21 +1,21 @@
 package com.example.bioscoopapp.Data;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 
 import androidx.room.Room;
 
 public class DatabaseClient {
-    private Context context;
+    @SuppressLint("StaticFieldLeak")
     private static DatabaseClient instance;
 
     private AppDatabase appDatabase;
 
     public DatabaseClient(Context context) {
-        this.context = context;
 
         try {
-            appDatabase = Room.databaseBuilder(this.context, AppDatabase.class, "App_database").build();
+            appDatabase = Room.databaseBuilder(context, AppDatabase.class, "App_database").build();
             Log.d("Database_instance", "Succeded");
         } catch (Exception e) {
             Log.d("Database_instance", e.toString());

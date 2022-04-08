@@ -39,7 +39,7 @@ public class MovieListActivity extends AppCompatActivity implements RecyclerView
     private ArrayList<Movie> movies;
     private ArrayList<Movie> finalMovies;
     private MovieRepository repo;
-    private int count = 0;
+    private final int count = 0;
     private int listID;
 
 
@@ -124,7 +124,7 @@ public class MovieListActivity extends AppCompatActivity implements RecyclerView
                         recyclerView.setAdapter(adapter);
                         iscAsc = false;
                     } else {
-                        adapter = new MovieCustomListAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByDateDESC(movies), MovieListActivity.this,listID);
+                        adapter = new MovieCustomListAdapter(getApplicationContext(), new MovieManager().sortMoviesByDateDESC(movies), MovieListActivity.this,listID);
                         recyclerView.setAdapter(adapter);
                         iscAsc = true;
                     }
@@ -164,7 +164,7 @@ public class MovieListActivity extends AppCompatActivity implements RecyclerView
                         recyclerView.setAdapter(adapter);
                         iscAsc = false;
                     } else {
-                        adapter = new MovieCustomListAdapter(getApplicationContext(), (ArrayList<Movie>) new MovieManager().sortMoviesByRatingDESC(movies), MovieListActivity.this,listID);
+                        adapter = new MovieCustomListAdapter(getApplicationContext(), new MovieManager().sortMoviesByRatingDESC(movies), MovieListActivity.this,listID);
                         recyclerView.setAdapter(adapter);
                         iscAsc = true;
                     }
