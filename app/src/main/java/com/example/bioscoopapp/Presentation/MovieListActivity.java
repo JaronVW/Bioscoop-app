@@ -191,7 +191,7 @@ public class MovieListActivity extends AppCompatActivity implements RecyclerView
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
+        getMenuInflater().inflate(R.menu.custom_list_page_menu, menu);
         return true;
     }
 

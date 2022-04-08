@@ -21,20 +21,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.bioscoopapp.Data.APIConnection;
 import com.example.bioscoopapp.Data.RecyclerViewInterface;
-import com.example.bioscoopapp.Domain.Account;
-import com.example.bioscoopapp.Domain.MediaID;
 import com.example.bioscoopapp.Domain.Movie;
-import com.example.bioscoopapp.Domain.MovieList;
 import com.example.bioscoopapp.Logic.LanguageManager;
-import com.example.bioscoopapp.Logic.MovieListRepository;
 import com.example.bioscoopapp.Logic.MovieManager;
 import com.example.bioscoopapp.Logic.MovieRepository;
 import com.example.bioscoopapp.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
@@ -192,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.main_page_menu, menu);
         return true;
     }
 

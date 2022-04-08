@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/share_item"
+        android:icon="@drawable/ic_share_item"
+        android:title="@string/preferences_text"
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/movieLists"
+        android:icon="@drawable/ic_view_movie_lists"
+        android:title="@string/preferences_text"
+        app:showAsAction="always" />
+    <item android:id="@+id/settings"
+        android:title="@string/preferences_text"
+        android:icon="@drawable/ic_settings_icon"
+        app:showAsAction="ifRoom">
+    </item>
+
+
+
+</menu>
