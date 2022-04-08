@@ -4,102 +4,137 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Presentation.MainActivity" >
+    tools:context=".Presentation.MainActivity">
 
     <EditText
         android:id="@+id/search_movies"
         android:layout_width="0dp"
-        android:layout_height="38dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:hint="@string/search_movies"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/movies_filter_icon"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill,TextFields" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movies_recyclerview"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clearSortingOptionsButton">
+        app:layout_constraintTop_toBottomOf="@+id/search_button">
 
     </androidx.recyclerview.widget.RecyclerView>
-
-    <TextView
-        android:id="@+id/movies_filter_icon"
-        android:layout_width="40dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/ic_filters_icon"
-        android:contentDescription="@string/an_icon_of_a_filter"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TextView>
 
     <Button
         android:id="@+id/sortRating"
         android:layout_width="75dp"
         android:layout_height="35dp"
-        android:layout_marginStart="56dp"
-        android:text="Rating"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/movies_recyclerview"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_movies"
-        app:layout_constraintVertical_bias="1.0" />
+        android:layout_marginEnd="8dp"
+        android:text="@string/rating_text"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/sortDate"
+        app:layout_constraintEnd_toStartOf="@+id/sortDate"
+        app:layout_constraintTop_toTopOf="@+id/sortDate" />
 
     <Button
         android:id="@+id/sortDate"
         android:layout_width="70dp"
         android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Date"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/sortRating"
-        app:layout_constraintTop_toBottomOf="@+id/search_movies" />
+        android:layout_marginEnd="8dp"
+        android:text="@string/date_text"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/sortTitle"
+        app:layout_constraintEnd_toStartOf="@+id/sortTitle"
+        app:layout_constraintTop_toTopOf="@+id/sortTitle" />
 
     <Button
         android:id="@+id/sortTitle"
         android:layout_width="70dp"
         android:layout_height="35dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="title"
-        android:textSize="10sp"
-        app:layout_constraintStart_toEndOf="@+id/sortDate"
-        app:layout_constraintTop_toBottomOf="@+id/search_movies" />
+        android:layout_marginEnd="8dp"
+        android:text="@string/title_text"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/clearSortingOptionsButton"
+        app:layout_constraintEnd_toStartOf="@+id/clearSortingOptionsButton"
+        app:layout_constraintTop_toTopOf="@+id/clearSortingOptionsButton" />
 
     <Button
         android:id="@+id/clearSortingOptionsButton"
         android:layout_width="70dp"
         android:layout_height="35dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="Clear"
-        android:textSize="10sp"
+        android:text="@string/clear_text"
+        android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/sortTitle"
         app:layout_constraintTop_toBottomOf="@+id/search_movies" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Sort by:"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/sort_by_text"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/movies_recyclerview"
-        app:layout_constraintEnd_toStartOf="@+id/sortRating"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_movies" />
+
+    <EditText
+        android:id="@+id/date_picker"
+        android:layout_width="126dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clearSortingOptionsButton"
+        tools:ignore="Autofill,TextFields" />
+
+    <EditText
+        android:id="@+id/rating_picker"
+        android:layout_width="121dp"
+        android:layout_height="41dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="@+id/textView4"
+        tools:ignore="Autofill,TextFields" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/date_text"
+        app:layout_constraintBottom_toBottomOf="@+id/date_picker"
+        app:layout_constraintEnd_toStartOf="@+id/date_picker"
+        app:layout_constraintTop_toTopOf="@+id/date_picker" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/rating_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/search_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_picker" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

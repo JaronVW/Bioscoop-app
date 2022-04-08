@@ -14,7 +14,7 @@
         android:theme="@style/Theme.BioscoopApp">
         <activity
             android:name=".Presentation.MainActivity"
-            android:windowSoftInputMode="stateHidden"
+            android:windowSoftInputMode="adjustPan"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,6 +38,7 @@
         <activity
             android:name=".Presentation.MovieListActivity"
             android:label="Movie list details"
+            android:windowSoftInputMode="stateHidden"
             android:parentActivityName=".Presentation.MovieListActivity"/>
 
         <activity android:name=".Presentation.MovieListsActivity"

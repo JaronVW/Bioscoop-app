@@ -38,40 +38,18 @@
         <item>es</item>
         <item>ru</item>
     </string-array>
-    <string-array name="date_array">
-        <item>2015–2022</item>
-        <item>2010–2014</item>
-        <item>2005–2009</item>
-        <item>2000–2004</item>
-        <item>1995–1999</item>
-        <item>1990–1994</item>
-        <item>1985–1989</item>
-        <item>1980–1984</item>
-        <item>1975–1979</item>
-        <item>1970–1974</item>
-        <item>1965–1969</item>
-        <item>1960–1964</item>
-        <item>1955–1959</item>
-        <item>1950–1954</item>
-    </string-array>
-    <string-array name="rating_array">
-        <item>0–1</item>
-        <item>1–2</item>
-        <item>2–3</item>
-        <item>3–4</item>
-        <item>4–5</item>
-        <item>5–6</item>
-        <item>6–7</item>
-        <item>7–8</item>
-        <item>8–9</item>
-        <item>9–10</item>
-    </string-array>
     <string name="language_summary" translatable="false">Language, Taal, Sprache, Langue, Idioma, Язык.</string>
-    <string name="remove_list">Remove list</string>
-    <string name="add_list_field_description">Description(Optional)</string>
-    <string name="add_list_field_create">Create</string>
-    <string name="add_list_field_list_name">List name</string>
-    <string name="add_list_field_create_a_list">Create a list</string>
-    <string name="add_movie_to_list_button_text">Add to list</string>
+    <string name="remove_list" translatable="false">Remove list</string>
+    <string name="add_list_field_description" translatable="false">Description(Optional)</string>
+    <string name="add_list_field_create" translatable="false">Create</string>
+    <string name="add_list_field_list_name" translatable="false">List name</string>
+    <string name="add_list_field_create_a_list" translatable="false">Create a list</string>
+    <string name="add_movie_to_list_button_text" translatable="false">Add to list</string>
+    <string name="rating_text" translatable="false">Rating</string>
+    <string name="date_text" translatable="false">Date</string>
+    <string name="title_text" translatable="false">title</string>
+    <string name="clear_text" translatable="false">Clear</string>
+    <string name="sort_by_text" translatable="false">Sort by:</string>
+    <string name="search_text" translatable="false">Search</string>
 
 </resources>

@@ -1,16 +1,9 @@
 package com.example.bioscoopapp.Data;
 
 
-import android.os.Build;
 import android.util.Log;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-
 import com.example.bioscoopapp.Domain.Account;
-import com.example.bioscoopapp.Domain.Genre;
 import com.example.bioscoopapp.Domain.MediaID;
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Domain.MovieDetail;
@@ -22,6 +15,11 @@ import com.example.bioscoopapp.Domain.MoviePostToListPostResponse;
 import com.example.bioscoopapp.Domain.Page;
 import com.example.bioscoopapp.Domain.VideoResult;
 import com.example.bioscoopapp.Presentation.MainActivity;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -133,33 +131,6 @@ public class APIConnection  {
             return null;
         }
 
-    }
-    public List<Genre> getGenres() {
-        CountDownLatch latch = new CountDownLatch(1);
-        ArrayList<Genre> genreList = new ArrayList<>();
-        // list that contains the movies and countdown latch used to wait for the thread to finish
-        new Thread(() -> {
-            try {
-                Call<List<Genre>> callSync = apiCalls.getGenres(apiKey.getAPI_KEY());
-                Response<List<Genre>> response = callSync.execute();
-
-                if (response.body() != null) {
-                    genreList.addAll(response.body());
-                }
-                latch.countDown();
-            } catch (IOException e) {
-                Log.d(TAG, e.toString());
-            }
-        }).start();
-        // api fetch gets executed in new thread
-        try {
-            latch.await();
-            return genreList;
-            // returns list after countdown has been called
-        } catch (InterruptedException e) {
-            Log.d(TAG, e.toString());
-            return null;
-        }
     }
 
     public MovieList getMovieList(int list_id) {

@@ -11,10 +11,17 @@
         <entry key="..\:/Users/Jaron/Documents/avans_hbo/PMOSE/Bioscoop-app/app/src/main/res/layout/activity_main.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/Jaron/Documents/avans_hbo/PMOSE/Bioscoop-app/app/src/main/res/layout/movielist_item.xml" value="0.3641304347826087" />
         <entry key="..\:/Users/Jaron/Documents/avans_hbo/PMOSE/Bioscoop-app/app/src/main/res/menu/menu.xml" value="0.25" />
-        <entry key="..\:/Users/hgkar/AndroidStudioProjects/Bioscoop-app/app/src/main/res/layout/activity_list_of_movies.xml" value="0.18931159420289856" />
+        <entry key="..\:/Users/hgkar/AndroidStudioProjects/Bioscoop-app/app/src/main/res/drawable/ic_baseline_filter_alt_24.xml" value="0.2595" />
+        <entry key="..\:/Users/hgkar/AndroidStudioProjects/Bioscoop-app/app/src/main/res/layout/activity_add_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hgkar/AndroidStudioProjects/Bioscoop-app/app/src/main/res/layout/activity_list_of_movielists.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hgkar/AndroidStudioProjects/Bioscoop-app/app/src/main/res/layout/activity_list_of_movies.xml" value="0.29767441860465116" />
         <entry key="..\:/Users/hgkar/AndroidStudioProjects/Bioscoop-app/app/src/main/res/layout/activity_movie_details.xml" value="0.18931159420289856" />
-        <entry key="..\:/Users/hgkar/AndroidStudioProjects/Bioscoop-app/app/src/main/res/layout/activity_popup.xml" value="0.26256281407035176" />
+        <entry key="..\:/Users/hgkar/AndroidStudioProjects/Bioscoop-app/app/src/main/res/layout/activity_popup.xml" value="0.3762606671838635" />
         <entry key="..\:/Users/hgkar/AndroidStudioProjects/Bioscoop-app/app/src/main/res/layout/activity_view_saved_list.xml" value="0.1" />
+        <entry key="..\:/Users/hgkar/AndroidStudioProjects/Bioscoop-app/app/src/main/res/layout/movie_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hgkar/AndroidStudioProjects/Bioscoop-app/app/src/main/res/layout/movielist_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hgkar/AndroidStudioProjects/Bioscoop-app/app/src/main/res/layout/movielist_item_custom_list.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hgkar/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

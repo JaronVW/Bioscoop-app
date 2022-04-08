@@ -6,8 +6,6 @@ import androidx.annotation.RequiresApi;
 
 import com.example.bioscoopapp.Domain.Movie;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RequiresApi(api = Build.VERSION_CODES.N)
-public class  MovieManager {
+public class MovieManager {
 
 
     public List<Movie> sortMoviesByDateASC(List<Movie> movies) {
@@ -59,15 +57,13 @@ public class  MovieManager {
     public List<Movie> searchFilter(List<Movie> movies, String searchQuery) {
         return movies.stream().filter(p -> p.getTitle().toLowerCase().contains(searchQuery)).collect(Collectors.toList());
     }
-    public List<Movie> dateFilter(ArrayList<Movie> movies, String releaseDate){
+
+    public List<Movie> dateFilter(ArrayList<Movie> movies, String releaseDate) {
         return movies.stream().filter(p -> p.getReleaseDate().contains(releaseDate)).collect(Collectors.toList());
     }
 
-//    public List<Movie> GenreFilter (List<Movie> movies, String genre) {
-//        return movies.stream().filter(p -> p.)
-//    }
-//    public List<Movie> ratingFilter(List<Movie> movies, Real rating ) {
-//
-//    }
+    public List<Movie> ratingFilter(List<Movie> movies, String rating) {
+        return movies.stream().filter(p -> p.getVoteAverage().toString().equals(rating)).collect(Collectors.toList());
+    }
 
 }
