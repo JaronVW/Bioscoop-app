@@ -1,6 +1,7 @@
 package com.example.bioscoopapp.Data;
 
 import com.example.bioscoopapp.Domain.Account;
+import com.example.bioscoopapp.Domain.Genre;
 import com.example.bioscoopapp.Domain.MediaID;
 import com.example.bioscoopapp.Domain.MovieList;
 import com.example.bioscoopapp.Domain.MovieListCreator;
@@ -10,6 +11,8 @@ import com.example.bioscoopapp.Domain.MovieDetail;
 import com.example.bioscoopapp.Domain.MoviePostToListPostResponse;
 import com.example.bioscoopapp.Domain.Page;
 import com.example.bioscoopapp.Domain.VideoResult;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -45,6 +48,9 @@ public interface APICalls  {
 
     @GET("list/{list_id}")
     Call<MovieList> getMovieListDetails(@Path("list_id") int list_id, @Query("api_key") String api_key, @Query("language") String language);
+
+    @GET("genre/movie/list")
+    Call<List<Genre>> getGenres(@Query("api_key") String api_key);
 
     @POST("list/{list_id}/add_item")
     Call<MoviePostToListPostResponse> postToList(@Path("list_id") int list_id, @Query("api_key") String api_key, @Query("session_id") String session_id, @Body MediaID mediaID);

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 import com.example.bioscoopapp.Domain.Account;
+import com.example.bioscoopapp.Domain.Genre;
 import com.example.bioscoopapp.Domain.MediaID;
 import com.example.bioscoopapp.Domain.Movie;
 import com.example.bioscoopapp.Domain.MovieDetail;
@@ -133,12 +134,33 @@ public class APIConnection  {
         }
 
     }
+    public List<Genre> getGenres() {
+        CountDownLatch latch = new CountDownLatch(1);
+        ArrayList<Genre> genreList = new ArrayList<>();
+        // list that contains the movies and countdown latch used to wait for the thread to finish
+        new Thread(() -> {
+            try {
+                Call<List<Genre>> callSync = apiCalls.getGenres(apiKey.getAPI_KEY());
+                Response<List<Genre>> response = callSync.execute();
 
-
-
-
-
-
+                if (response.body() != null) {
+                    genreList.addAll(response.body());
+                }
+                latch.countDown();
+            } catch (IOException e) {
+                Log.d(TAG, e.toString());
+            }
+        }).start();
+        // api fetch gets executed in new thread
+        try {
+            latch.await();
+            return genreList;
+            // returns list after countdown has been called
+        } catch (InterruptedException e) {
+            Log.d(TAG, e.toString());
+            return null;
+        }
+    }
 
     public MovieList getMovieList(int list_id) {
         CountDownLatch latch = new CountDownLatch(1);
